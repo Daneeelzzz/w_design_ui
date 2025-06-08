@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Katalog Produk - Himti Store</title>
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="../css/header.css" />
+  <link rel="stylesheet" href="../css/footer.css" />
+  <link rel="stylesheet" href="../css/products.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <a href="../index.html">
+          <h1>Himti Store</h1>
+        </a>
+      </div>
+      <nav>
+        <div class="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links">
+          <li><a href="../index.html">Beranda</a></li>
+          <li><a href="../articles/index.html">Artikel</a></li>
+          <li><a href="index.html" class="active">Produk</a></li>
+          <li class="nav-icons">
+            <a href="cart.html" class="cart-icon">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="cart-count">0</span>
+            </a>
+          </li>
+          <li class="nav-icons">
+            <a href="../account/login.html" class="login-btn">Masuk</a>
+          </li>
+          <li class="nav-icons">
+            <a href="account/profile.html" class="profile-icon" title="Profil Anda">
+              <i class="fas fa-user-circle"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Product Catalog Header with Search -->
+    <section class="product-header">
+      <div class="container">
+        <div class="header-content">
+          <div class="header-text">
+            <h1>Katalog Produk</h1>
+            <p>Temukan berbagai produk berkualitas dengan harga terbaik</p>
+          </div>
+          <form id="searchForm" class="search-bar">
+            <div class="search-container">
+              <input type="text" id="searchInput" placeholder="Cari produk..." />
+              <button type="submit" class="search-btn">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+            <div class="filter-dropdown">
+              <select id="categoryFilter">
+                <option value="">Semua Kategori</option>
+                <option value="elektronik">Elektronik</option>
+                <option value="fashion">Fashion</option>
+                <option value="aksesoris">Aksesoris</option>
+                <option value="lainnya">Lainnya</option>
+              </select>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Grid -->
+    <section class="product-grid-section">
+      <div class="container">
+        <div class="product-grid" id="productGrid">
+          <!-- Product 1 - Ganci -->
+          <div class="product-card" data-name="Ipomg 99" data-category="aksesoris">
+            <div class="product-badge">Terbaru</div>
+            <div class="product-image">
+              <a href="product-detailhp.html">
+                <img src="../image/ipong.jpeg" alt="Ipong 99" />
+              </a>
+              <div class="product-actions">
+                <button class="action-btn add-to-cart">
+                  <i class="fas fa-cart-plus"></i> Tambah ke Keranjang
+                </button>
+                <button class="action-btn quick-view">
+                  <i class="fas fa-eye"></i> Lihat Cepat
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <span class="product-category">Elektronik</span>
+              <h3><a href="product-detailhp.html">Ipong 99 Pro Ultramax</a></h3>
+              <div class="product-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-count">(1.245)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">Rp 44.999.000</span>
+                <span class="old-price">Rp 75.999.000</span>
+                <span class="discount">35%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 2 - Totebag -->
+          <div class="product-card" data-name="Totebag HIMTI" data-category="fashion">
+            <div class="product-badge sale">Diskon 30%</div>
+            <div class="product-image">
+              <a href="product-detail pdh.html">
+                <img src="../image/Produk.jpg" alt="Totebag HIMTI" />
+              </a>
+              <div class="product-actions">
+                <button class="action-btn add-to-cart">
+                  <i class="fas fa-cart-plus"></i> Tambah ke Keranjang
+                </button>
+                <button class="action-btn quick-view">
+                  <i class="fas fa-eye"></i> Lihat Cepat
+                </button>
+              </div>
+            </div>
+            <div class="product-info">
+              <span class="product-category">Fashion</span>
+              <h3><a href="product-detail pdh.html">PDH HIMTI</a></h3>
+              <div class="product-rating">
+                <span class="stars">★★★★☆</span>
+                <span class="rating-count">(892)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">Rp 75.000</span>
+                <span class="old-price">Rp 50.000</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+          <a href="#" class="page-nav"><i class="fas fa-chevron-left"></i></a>
+          <a href="#" class="active">1</a>
+          <a href="../products/index copy.html">2</a>
+          <a href="#">3</a>
+          <a href="#">4</a>
+          <a href="#">5</a>
+          <a href="#" class="page-nav"><i class="fas fa-chevron-right"></i></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h2>Himti Store</h2>
+          <p>Belanja & Baca dalam Satu Platform</p>
+          <div class="social-media">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column">
+            <h3>Navigasi</h3>
+            <ul>
+              <li><a href="../index.html">Beranda</a></li>
+              <li><a href="../articles/index.html">Artikel</a></li>
+              <li><a href="index.html">Produk</a></li>
+              <li><a href="cart.html">Keranjang</a></li>
+              <li><a href="../about.html">Tentang Kami</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Akun</h3>
+            <ul>
+              <li><a href="../account/login.html">Masuk</a></li>
+              <li><a href="../account/register.html">Daftar</a></li>
+              <li><a href="../account/history.html">Riwayat Transaksi</a></li>
+              <li><a href="../account/settings.html">Pengaturan Akun</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Bantuan</h3>
+            <ul>
+              <li><a href="../faq.html">FAQ</a></li>
+              <li><a href="../shipping.html">Pengiriman</a></li>
+              <li><a href="../returns.html">Retur</a></li>
+              <li><a href="../payment.html">Pembayaran</a></li>
+              <li><a href="../contact.html">Hubungi Kami</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Hubungi Kami</h3>
+            <ul class="contact-info">
+              <li><i class="fas fa-envelope"></i> info@himtistore.com</li>
+              <li><i class="fas fa-phone"></i> +62 123 4567 890</li>
+              <li><i class="fas fa-map-marker-alt"></i> Jl. Contoh No. 123, Jakarta</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Himti Store. Hak Cipta Dilindungi.</p>
+        <div class="payment-methods">
+          <i class="fab fa-cc-visa"></i>
+          <i class="fab fa-cc-mastercard"></i>
+          <i class="fab fa-cc-paypal"></i>
+          <i class="fab fa-cc-discover"></i>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+
+    // Pencarian produk
+    document.getElementById("searchForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const keyword = document.getElementById("searchInput").value.toLowerCase();
+      const category = document.getElementById("categoryFilter").value.toLowerCase();
+      const products = document.querySelectorAll(".product-card");
+
+      products.forEach((product) => {
+        const name = product.getAttribute("data-name").toLowerCase();
+        const productCategory = product.getAttribute("data-category").toLowerCase();
+        const nameMatch = name.includes(keyword);
+        const categoryMatch = category === "" || productCategory === category;
+        const isVisible = nameMatch && categoryMatch;
+        product.style.display = isVisible ? "block" : "none";
+      });
+    });
+
+    // Category filter change
+    document.getElementById("categoryFilter").addEventListener("change", function() {
+      document.getElementById("searchForm").dispatchEvent(new Event('submit'));
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Pengguna - Admin Himti Store</title>
+    <link rel="stylesheet" href="../css/amin/admin-dashboard.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Admin Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <h2>Himti Store</h2>
+                <p>Admin Panel</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-item"><span class="nav-icon">📊</span><span class="nav-label">Dashboard</span></a></li>
+                    <li><a href="articles.html" class="nav-item"><span class="nav-icon">📝</span><span class="nav-label">Artikel</span></a></li>
+                    <li><a href="products.html" class="nav-item"><span class="nav-icon">📦</span><span class="nav-label">Produk</span></a></li>
+                    <li><a href="users.html" class="nav-item active"><span class="nav-icon">👥</span><span class="nav-label">Pengguna</span></a></li>
+                    <li><a href="transaction.html" class="nav-item"><span class="nav-icon">💰</span><span class="nav-label">Transaksi</span></a></li>
+                    <li><a href="../index.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-label">Lihat Website</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Admin Content -->
+        <main class="admin-content">
+            <header class="admin-header">
+                <div class="header-search">
+                    <input type="text" placeholder="Cari...">
+                    <button type="submit">🔍</button>
+                </div>
+                <div class="header-actions">
+                    <div class="notifications">
+                        <button class="notification-btn">🔔</button>
+                        <span class="notification-badge">3</span>
+                    </div>
+                    <div class="admin-profile">
+                        <img src="../images/avatar.png" alt="Admin Avatar">
+                        <span>Admin</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="admin-page-content">
+                <div class="page-header">
+                    <h1>Kelola Pengguna</h1>
+                    <p class="welcome-message">Kelola data pengguna sistem</p>
+                    <button class="btn-add-user">+ Tambah Pengguna</button>
+                </div>
+                
+                <!-- Quick Stats Cards -->
+                <div class="dashboard-cards">
+                    <div class="dashboard-card">
+                        <div class="card-icon users">👥</div>
+                        <div class="card-value">1,254</div>
+                        <div class="card-label">Total Pengguna</div>
+                        <div class="card-change positive">+8.7%</div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-icon users">👤</div>
+                        <div class="card-value">24</div>
+                        <div class="card-label">Admin</div>
+                        <div class="card-change neutral">±0%</div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-icon users">🛒</div>
+                        <div class="card-value">1,150</div>
+                        <div class="card-label">Pelanggan</div>
+                        <div class="card-change positive">+10.2%</div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-icon users">🚫</div>
+                        <div class="card-value">18</div>
+                        <div class="card-label">Diblokir</div>
+                        <div class="card-change negative">-2.1%</div>
+                    </div>
+                </div>
+
+                <!-- User Management Section -->
+                <div class="content-section">
+                    <div class="section-header">
+                        <h3>Daftar Pengguna</h3>
+                        <div class="section-actions">
+                            <div class="filter-group">
+                                <label for="role-filter">Filter:</label>
+                                <select id="role-filter">
+                                    <option value="all">Semua Pengguna</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="customer">Pelanggan</option>
+                                    <option value="editor">Editor</option>
+                                </select>
+                            </div>
+                            <div class="search-group">
+                                <input type="text" placeholder="Cari pengguna...">
+                                <button type="submit">🔍</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="data-table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" id="select-all"></th>
+                                    <th>Pengguna</th>
+                                    <th>Email</th>
+                                    <th>Peran</th>
+                                    <th>Bergabung</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox" class="row-checkbox"></td>
+                                    <td>
+                                        <div class="user-info">
+                                            <img src="../images/avatar.png" alt="User Avatar">
+                                            <div>
+                                                <div class="user-name">John Doe</div>
+                                                <div class="user-id">ID: USR-001</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>john.doe@example.com</td>
+                                    <td><span class="role-badge customer">Pelanggan</span></td>
+                                    <td>12 Mei 2025</td>
+                                    <td><span class="status-badge active">Aktif</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="action-btn edit">✏️</button>
+                                            <button class="action-btn view">👁️</button>
+                                            <button class="action-btn delete">🗑️</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="row-checkbox"></td>
+                                    <td>
+                                        <div class="user-info">
+                                            <img src="../images/avatar.png" alt="User Avatar">
+                                            <div>
+                                                <div class="user-name">Jane Smith</div>
+                                                <div class="user-id">ID: USR-002</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>jane.smith@example.com</td>
+                                    <td><span class="role-badge admin">Admin</span></td>
+                                    <td>10 Mei 2025</td>
+                                    <td><span class="status-badge active">Aktif</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="action-btn edit">✏️</button>
+                                            <button class="action-btn view">👁️</button>
+                                            <button class="action-btn delete">🗑️</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="row-checkbox"></td>
+                                    <td>
+                                        <div class="user-info">
+                                            <img src="../images/avatar.png" alt="User Avatar">
+                                            <div>
+                                                <div class="user-name">David Johnson</div>
+                                                <div class="user-id">ID: USR-003</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>david.johnson@example.com</td>
+                                    <td><span class="role-badge editor">Editor</span></td>
+                                    <td>8 Mei 2025</td>
+                                    <td><span class="status-badge inactive">Tidak Aktif</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="action-btn edit">✏️</button>
+                                            <button class="action-btn view">👁️</button>
+                                            <button class="action-btn delete">🗑️</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="row-checkbox"></td>
+                                    <td>
+                                        <div class="user-info">
+                                            <img src="../images/avatar.png" alt="User Avatar">
+                                            <div>
+                                                <div class="user-name">Sarah Williams</div>
+                                                <div class="user-id">ID: USR-004</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>sarah.williams@example.com</td>
+                                    <td><span class="role-badge customer">Pelanggan</span></td>
+                                    <td>5 Mei 2025</td>
+                                    <td><span class="status-badge active">Aktif</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="action-btn edit">✏️</button>
+                                            <button class="action-btn view">👁️</button>
+                                            <button class="action-btn delete">🗑️</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="row-checkbox"></td>
+                                    <td>
+                                        <div class="user-info">
+                                            <img src="../images/avatar.png" alt="User Avatar">
+                                            <div>
+                                                <div class="user-name">Michael Brown</div>
+                                                <div class="user-id">ID: USR-005</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>michael.brown@example.com</td>
+                                    <td><span class="role-badge customer">Pelanggan</span></td>
+                                    <td>3 Mei 2025</td>
+                                    <td><span class="status-badge blocked">Diblokir</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="action-btn edit">✏️</button>
+                                            <button class="action-btn view">👁️</button>
+                                            <button class="action-btn delete">🗑️</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="pagination">
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#" class="next">Selanjutnya &raquo;</a>
+                    </div>
+                </div>
+                
+                <!-- Recent Activity Section -->
+                <div class="recent-activity">
+                    <div class="activity-header">
+                        <h3 class="activity-title">Aktivitas Pengguna Terbaru</h3>
+                        <a href="#" class="view-all">Lihat Semua →</a>
+                    </div>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon user">👤</div>
+                            <div class="activity-content">
+                                <div class="activity-text"><strong>John Doe</strong> telah memperbarui profilnya</div>
+                                <div class="activity-time">15 menit yang lalu</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon order">📦</div>
+                            <div class="activity-content">
+                                <div class="activity-text"><strong>Sarah Williams</strong> membuat pesanan baru #ORD12346</div>
+                                <div class="activity-time">1 jam yang lalu</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon user">👤</div>
+                            <div class="activity-content">
+                                <div class="activity-text"><strong>Pengguna baru</strong> telah mendaftar: Robert Taylor</div>
+                                <div class="activity-time">3 jam yang lalu</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon blocked">🚫</div>
+                            <div class="activity-content">
+                                <div class="activity-text"><strong>Michael Brown</strong> telah diblokir oleh admin</div>
+                                <div class="activity-time">5 jam yang lalu</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon login">🔑</div>
+                            <div class="activity-content">
+                                <div class="activity-text"><strong>Jane Smith</strong> login ke sistem admin</div>
+                                <div class="activity-time">8 jam yang lalu</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

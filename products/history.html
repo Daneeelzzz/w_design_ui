@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Riwayat Transaksi - Himti Store</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    :root {
+      --primary: #da781c;
+      --primary-light: #f8a145;
+      --secondary: #8f94fb;
+      --accent: #ff6b6b;
+      --dark: #2c3e50;
+      --light: #f8f9fa;
+      --success: #2ecc71;
+      --warning: #f39c12;
+      --gray: #95a5a6;
+      --light-gray: #e0e0e0;
+      --white: #ffffff;
+      --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    body {
+      background: #f5f5f5;
+      min-height: 100vh;
+      padding: 20px;
+      color: var(--dark);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header Styles */
+    header {
+      background: var(--white);
+      padding: 15px 30px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo-icon {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .logo-text h1 {
+      font-size: 24px;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .logo-text p {
+      color: var(--gray);
+      font-size: 14px;
+      margin-top: 2px;
+    }
+
+    .user-section {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .user-info {
+      text-align: right;
+    }
+
+    .user-info .name {
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--dark);
+    }
+
+    .user-info .email {
+      font-size: 13px;
+      color: var(--gray);
+    }
+
+    .user-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--secondary) 0%, #6a70ff 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    /* Main Content */
+    .main-content {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 25px;
+    }
+
+    /* Sidebar Navigation */
+    .sidebar {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 25px 0;
+      box-shadow: var(--shadow);
+      height: fit-content;
+    }
+
+    .sidebar-item {
+      padding: 14px 25px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--gray);
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      border-left: 4px solid transparent;
+    }
+
+    .sidebar-item:hover {
+      color: var(--primary);
+      background: rgba(218, 120, 28, 0.05);
+    }
+
+    .sidebar-item.active {
+      color: var(--primary);
+      background: rgba(218, 120, 28, 0.08);
+      border-left: 4px solid var(--primary);
+    }
+
+    .sidebar-item i {
+      width: 24px;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    /* Content Area */
+    .content-area {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    /* Dashboard Cards */
+    .dashboard-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .dashboard-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .dashboard-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .card-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+
+    .card-icon.primary {
+      background: rgba(218, 120, 28, 0.15);
+      color: var(--primary);
+    }
+
+    .card-icon.success {
+      background: rgba(46, 204, 113, 0.15);
+      color: var(--success);
+    }
+
+    .card-icon.warning {
+      background: rgba(243, 156, 18, 0.15);
+      color: var(--warning);
+    }
+
+    .card-value {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: var(--dark);
+    }
+
+    .card-label {
+      color: var(--gray);
+      font-size: 14px;
+    }
+
+    /* Transaction History Section */
+    .history-section {
+      background: var(--white);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .section-header {
+      padding: 25px;
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    .section-header h2 {
+      font-size: 22px;
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-header h2 i {
+      color: var(--primary);
+    }
+
+    .filters {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 8px 16px;
+      border-radius: 20px;
+      background: var(--light);
+      border: 1px solid var(--light-gray);
+      cursor: pointer;
+      font-size: 14px;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .filter-btn i {
+      font-size: 12px;
+    }
+
+    .history-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .history-table th {
+      background: var(--light);
+      padding: 16px 20px;
+      text-align: left;
+      font-weight: 600;
+      color: var(--gray);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .history-table td {
+      padding: 20px;
+      border-bottom: 1px solid var(--light-gray);
+      font-size: 15px;
+    }
+
+    .history-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .history-table tr:hover {
+      background: rgba(218, 120, 28, 0.03);
+    }
+
+    .status {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      display: inline-block;
+    }
+
+    .status.completed {
+      background: rgba(46, 204, 113, 0.15);
+      color: var(--success);
+    }
+
+    .status.pending {
+      background: rgba(243, 156, 18, 0.15);
+      color: var(--warning);
+    }
+
+    .status.cancelled {
+      background: rgba(231, 76, 60, 0.15);
+      color: #e74c3c;
+    }
+
+    .action-btn {
+      padding: 8px 15px;
+      border-radius: 8px;
+      background: var(--white);
+      border: 1px solid var(--light-gray);
+      cursor: pointer;
+      font-size: 14px;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .action-btn:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* Mobile Cards */
+    .mobile-history {
+      display: none;
+      padding: 20px;
+    }
+
+    .history-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 15px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+      border-left: 4px solid var(--primary);
+      transition: var(--transition);
+    }
+
+    .history-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .transaction-id {
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .transaction-date {
+      color: var(--gray);
+      font-size: 13px;
+    }
+
+    .card-middle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .info-item p:first-child {
+      font-size: 13px;
+      color: var(--gray);
+      margin-bottom: 5px;
+    }
+
+    .card-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .main-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .sidebar {
+        display: flex;
+        overflow-x: auto;
+        padding: 15px;
+        gap: 10px;
+      }
+      
+      .sidebar-item {
+        border-left: none;
+        border-bottom: 3px solid transparent;
+        padding: 10px 15px;
+        white-space: nowrap;
+      }
+      
+      .sidebar-item.active {
+        border-bottom: 3px solid var(--primary);
+        border-left: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .history-table {
+        display: none;
+      }
+      
+      .mobile-history {
+        display: block;
+      }
+      
+      .dashboard-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .filters {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      header {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        padding: 20px;
+      }
+      
+      .user-section {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .user-info {
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card-middle {
+        grid-template-columns: 1fr;
+      }
+      
+      .card-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+      
+      .card-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .history-table tr, .history-card {
+      animation: fadeIn 0.4s ease-out;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--white);
+      padding: 20px 0;
+      text-align: center;
+      margin-top: 40px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+    }
+
+    footer p {
+      color: var(--dark);
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="logo-container">
+        <div class="logo-icon">
+          <i class="fas fa-laptop-code"></i>
+        </div>
+        <div class="logo-text">
+          <h1>Himti Store</h1>
+          <p>Teknologi untuk Masa Depan</p>
+        </div>
+      </div>
+      <div class="user-section">
+        <div class="user-info">
+          <div class="name">Ahmad Fauzi</div>
+          <div class="email">ahmadfauzi@himtistore.id</div>
+        </div>
+        <div class="user-avatar">
+          <span>A</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="main-content">
+      <!-- Sidebar Navigation -->
+      <div class="sidebar">
+        <div class="sidebar-item">
+          <i class="fas fa-home"></i>
+          <span>Dashboard</span>
+        </div>
+        <div class="sidebar-item active">
+          <i class="fas fa-history"></i>
+          <span>Riwayat Transaksi</span>
+        </div>
+        <div class="sidebar-item">
+          <i class="fas fa-shopping-cart"></i>
+          <span>Keranjang Belanja</span>
+        </div>
+        <div class="sidebar-item">
+          <i class="fas fa-heart"></i>
+          <span>Favorit Saya</span>
+        </div>
+        <div class="sidebar-item">
+          <i class="fas fa-cog"></i>
+          <span>Pengaturan Akun</span>
+        </div>
+        <div class="sidebar-item">
+          <i class="fas fa-question-circle"></i>
+          <span>Bantuan</span>
+        </div>
+        <div class="sidebar-item">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Keluar</span>
+        </div>
+      </div>
+
+      <!-- Content Area -->
+      <div class="content-area">
+        <!-- Dashboard Cards -->
+        <div class="dashboard-cards">
+          <div class="dashboard-card">
+            <div class="card-header">
+              <div>
+                <div class="card-value">Rp 2.450.000</div>
+                <div class="card-label">Total Pengeluaran</div>
+              </div>
+              <div class="card-icon primary">
+                <i class="fas fa-wallet"></i>
+              </div>
+            </div>
+          </div>
+          
+          <div class="dashboard-card">
+            <div class="card-header">
+              <div>
+                <div class="card-value">12</div>
+                <div class="card-label">Transaksi Selesai</div>
+              </div>
+              <div class="card-icon success">
+                <i class="fas fa-check-circle"></i>
+              </div>
+            </div>
+          </div>
+          
+          <div class="dashboard-card">
+            <div class="card-header">
+              <div>
+                <div class="card-value">3</div>
+                <div class="card-label">Transaksi Pending</div>
+              </div>
+              <div class="card-icon warning">
+                <i class="fas fa-clock"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Transaction History Section -->
+        <div class="history-section">
+          <div class="section-header">
+            <h2><i class="fas fa-file-invoice"></i> Riwayat Transaksi Saya</h2>
+            
+            <div class="filters">
+              <div class="filter-btn active">
+                <i class="fas fa-list"></i> Semua Transaksi
+              </div>
+              <div class="filter-btn">
+                <i class="fas fa-check"></i> Selesai
+              </div>
+              <div class="filter-btn">
+                <i class="fas fa-clock"></i> Pending
+              </div>
+              <div class="filter-btn">
+                <i class="fas fa-times"></i> Dibatalkan
+              </div>
+              <div class="filter-btn">
+                <i class="fas fa-download"></i> Export
+              </div>
+            </div>
+          </div>
+
+          <!-- Desktop Table -->
+          <table class="history-table">
+            <thead>
+              <tr>
+                <th>ID Transaksi</th>
+                <th>Tanggal</th>
+                <th>Produk</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#HIMTI2025-001</td>
+                <td>12 Mei 2025</td>
+                <td>Kabel Data USB-C</td>
+                <td>Rp 150.000</td>
+                <td><span class="status completed">Selesai</span></td>
+                <td>
+                  <button class="action-btn">
+                    <i class="fas fa-eye"></i> Detail
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>#HIMTI2025-045</td>
+                <td>10 Mei 2025</td>
+                <td>Mouse Wireless, Mouse Pad</td>
+                <td>Rp 320.000</td>
+                <td><span class="status completed">Selesai</span></td>
+                <td>
+                  <button class="action-btn">
+                    <i class="fas fa-eye"></i> Detail
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>#HIMTI2025-078</td>
+                <td>8 Mei 2025</td>
+                <td>Power Bank 20.000mAh</td>
+                <td>Rp 350.000</td>
+                <td><span class="status completed">Selesai</span></td>
+                <td>
+                  <button class="action-btn">
+                    <i class="fas fa-eye"></i> Detail
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>#HIMTI2025-112</td>
+                <td>5 Mei 2025</td>
+                <td>Keyboard Mechanical</td>
+                <td>Rp 650.000</td>
+                <td><span class="status pending">Pending</span></td>
+                <td>
+                  <button class="action-btn">
+                    <i class="fas fa-eye"></i> Detail
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>#HIMTI2025-156</td>
+                <td>2 Mei 2025</td>
+                <td>Webcam HD, Tripod Kecil</td>
+                <td>Rp 520.000</td>
+                <td><span class="status completed">Selesai</span></td>
+                <td>
+                  <button class="action-btn">
+                    <i class="fas fa-eye"></i> Detail
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>#HIMTI2025-189</td>
+                <td>28 April 2025</td>
+                <td>SSD 512GB</td>
+                <td>Rp 460.000</td>
+                <td><span class="status pending">Pending</span></td>
+                <td>
+                  <button class="action-btn">
+                    <i class="fas fa-eye"></i> Detail
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Mobile Cards -->
+          <div class="mobile-history">
+            <div class="history-card">
+              <div class="card-top">
+                <div>
+                  <div class="transaction-id">#HIMTI2025-001</div>
+                  <div class="transaction-date">12 Mei 2025</div>
+                </div>
+                <div>
+                  <span class="status completed">Selesai</span>
+                </div>
+              </div>
+              <div class="card-middle">
+                <div class="info-item">
+                  <p>Produk</p>
+                  <p>Kabel Data USB-C</p>
+                </div>
+                <div class="info-item">
+                  <p>Total</p>
+                  <p>Rp 150.000</p>
+                </div>
+              </div>
+              <div class="card-bottom">
+                <div class="card-actions">
+                  <button class="action-btn">
+                    <i class="fas fa-eye"></i> Detail
+                  </button>
+                  <button class="action-btn">
+                    <i class="fas fa-redo"></i> Beli Lagi
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="history-card">
+              <div class="card-top">
+                <div>
+                  <div class="transaction-id">#HIMTI2025-112</div>
+                  <div class="transaction-date">5 Mei 2025</div>
+                </div>
+                <div>
+                  <span class="status pending">Pending</span>
+                </div>
+              </div>
+              <div class="card-middle">
+                <div class="info-item">
+                  <p>Produk</p>
+                  <p>Keyboard Mechanical</p>
+                </div>
+                <div class="info-item">
+                  <p>Total</p>
+                  <p>Rp 650.000</p>
+                </div>
+              </div>
+              <div class="card-bottom">
+                <div class="card-actions">
+                  <button class="action-btn">
+                    <i class="fas fa-eye"></i> Detail
+                  </button>
+                  <button class="action-btn">
+                    <i class="fas fa-times"></i> Batalkan
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="history-card">
+              <div class="card-top">
+                <div>
+                  <div class="transaction-id">#HIMTI2025-156</div>
+                  <div class="transaction-date">2 Mei 2025</div>
+                </div>
+                <div>
+                  <span class="status completed">Selesai</span>
+                </div>
+              </div>
+              <div class="card-middle">
+                <div class="info-item">
+                  <p>Produk</p>
+                  <p>Webcam HD, Tripod Kecil</p>
+                </div>
+                <div class="info-item">
+                  <p>Total</p>
+                  <p>Rp 520.000</p>
+                </div>
+              </div>
+              <div class="card-bottom">
+                <div class="card-actions">
+                  <button class="action-btn">
+                    <i class="fas fa-eye"></i> Detail
+                  </button>
+                  <button class="action-btn">
+                    <i class="fas fa-redo"></i> Beli Lagi
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Himti Store. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Simple interaction for demonstration
+    document.querySelectorAll('.action-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const transactionId = this.closest('tr') ? 
+          this.closest('tr').querySelector('td:first-child').textContent : 
+          this.closest('.history-card').querySelector('.transaction-id').textContent;
+        
+        alert(`Detail transaksi akan ditampilkan untuk: ${transactionId}`);
+      });
+    });
+    
+    // Filter buttons interaction
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Filter logic would go here
+        alert(`Filter diterapkan: ${this.textContent.trim()}`);
+      });
+    });
+    
+    // Sidebar items interaction
+    document.querySelectorAll('.sidebar-item').forEach(item => {
+      item.addEventListener('click', function() {
+        document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Navigation logic would go here
+        if(this.querySelector('span').textContent === 'Keluar') {
+          alert('Anda akan keluar dari sistem');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Pixel 9 - Himti Store</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/product.css">
+  <style>
+    /* Style khusus untuk halaman produk */
+    .product-container {
+      display: flex;
+      gap: 40px;
+      margin-top: 30px;
+    }
+    
+    .product-gallery {
+      flex: 1;
+    }
+    
+    .product-main-image {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .product-thumbnails {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .thumbnail {
+      width: 80px;
+      height: 80px;
+      border-radius: 5px;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+    
+    .thumbnail:hover {
+      border-color: #4285F4;
+    }
+    
+    .product-details {
+      flex: 1;
+    }
+    
+    .product-title {
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: #202124;
+    }
+    
+    .product-price {
+      font-size: 24px;
+      color: #EA4335;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+    
+    .product-actions {
+      margin: 25px 0;
+    }
+    
+    .btn-add-to-cart {
+      background-color: #4285F4;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    
+    .btn-add-to-cart:hover {
+      background-color: #3367D6;
+    }
+    
+    .product-specs {
+      margin: 30px 0;
+    }
+    
+    .spec-item {
+      margin-bottom: 10px;
+    }
+    
+    .spec-title {
+      font-weight: bold;
+      display: inline-block;
+      width: 150px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <h1>Himti Store</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Beranda</a></li>
+          <li><a href="../articles/index.html">Artikel</a></li>
+          <li><a href="index.html" class="active">Produk</a></li>
+          <li><a href="cart.html">Keranjang <span class="cart-count">0</span></a></li>
+          <li><a href="../account/login.html">Masuk</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="product-container">
+      <div class="product-gallery">
+        <img src="../image/Google pixel 9 512giga 12 go ram lancement propre tout d’origine facture garantie 645mil tu parles b.jpeg" alt="Google Pixel 9" class="product-main-image" id="mainImage">
+        <div class="product-thumbnails">
+          <img src="../image/google pixel1.jpeg" alt="Pixel 9 Depan" class="thumbnail" onclick="changeImage(this)">
+          <img src="../image/google pixel2.jpeg" alt="Pixel 9 Belakang" class="thumbnail" onclick="changeImage(this)">
+          <img src="../image/google_pcel.jpeg" alt="Pixel 9 Samping" class="thumbnail" onclick="changeImage(this)">
+          <img src="../image/ipong.jpeg" alt="Pixel 9 Layar" class="thumbnail" onclick="changeImage(this)">
+        </div>
+      </div>
+      
+      <div class="product-details">
+        <h1 class="product-title">Google Pixel 9</h1>
+        <div class="product-rating">
+          ★★★★★ <span>(4.9/5 dari 128 review)</span>
+        </div>
+        
+        <div class="product-price">
+          Rp12.999.000
+        </div>
+        
+        <div class="product-color-options">
+          <h3>Warna:</h3>
+          <div>
+            <input type="radio" id="obsidian" name="color" checked>
+            <label for="obsidian">Obsidian</label>
+            
+            <input type="radio" id="porcelain" name="color">
+            <label for="porcelain">Porcelain</label>
+            
+            <input type="radio" id="bay" name="color">
+            <label for="bay">Bay</label>
+            
+            <input type="radio" id="rose" name="color">
+            <label for="rose">Rose</label>
+          </div>
+        </div>
+        
+        <div class="product-storage-options">
+          <h3>Storage:</h3>
+          <div>
+            <input type="radio" id="128gb" name="storage" checked>
+            <label for="128gb">128GB</label>
+            
+            <input type="radio" id="256gb" name="storage">
+            <label for="256gb">256GB (+Rp1.500.000)</label>
+            
+            <input type="radio" id="512gb" name="storage">
+            <label for="512gb">512GB (+Rp3.000.000)</label>
+          </div>
+        </div>
+        
+        <div class="product-actions">
+          <button class="btn-add-to-cart" onclick="addToCart()">+ Tambah ke Keranjang</button>
+        </div>
+        
+        <div class="product-highlights">
+          <h3>Highlight Produk:</h3>
+          <ul>
+            <li>Chipset Google Tensor G4</li>
+            <li>Kamera 50MP dengan AI Photography</li>
+            <li>Layar OLED 120Hz 6.2"</li>
+            <li>Baterai 4500mAh dengan fast charging</li>
+            <li>Android 15 dengan update langsung dari Google</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="product-specs">
+      <h2>Spesifikasi Teknis</h2>
+      <div class="spec-item">
+        <span class="spec-title">Dimensi:</span>
+        <span>152.2 x 71.8 x 8.5 mm</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-title">Berat:</span>
+        <span>168 gram</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-title">Layar:</span>
+        <span>6.2" OLED, 120Hz, HDR10+, 2400x1080</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-title">Chipset:</span>
+        <span>Google Tensor G4</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-title">RAM:</span>
+        <span>8GB/12GB LPDDR5X</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-title">Storage:</span>
+        <span>128GB/256GB/512GB UFS 4.0</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-title">Kamera Belakang:</span>
+        <span>50MP (main) + 12MP (ultrawide)</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-title">Kamera Depan:</span>
+        <span>10.5MP</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-title">Baterai:</span>
+        <span>4500mAh, fast charging 30W</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-title">Sistem Operasi:</span>
+        <span>Android 15</span>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Himti Store. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Fungsi untuk mengganti gambar utama
+    function changeImage(element) {
+      document.getElementById('mainImage').src = element.src;
+    }
+    
+    // Fungsi untuk menambah ke keranjang
+    function addToCart() {
+      const color = document.querySelector('input[name="color"]:checked').id;
+      const storage = document.querySelector('input[name="storage"]:checked').id;
+      
+      alert(`Google Pixel 9 (${color}, ${storage}) telah ditambahkan ke keranjang!`);
+      
+      // Update counter keranjang
+      const cartCount = document.querySelector('.cart-count');
+      cartCount.textContent = parseInt(cartCount.textContent) + 1;
+    }
+  </script>
+</body>
+</html>

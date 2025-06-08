@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Admin Himti Store</title>
+    <link rel="stylesheet" href="../css//amin/admin-dashboard.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Admin Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <h2>Himti Store</h2>
+                <p>Admin Panel</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-item active"><span class="nav-icon">📊</span><span class="nav-label">Dashboard</span></a></li>
+                    <li><a href="articles.html" class="nav-item"><span class="nav-icon">📝</span><span class="nav-label">Artikel</span></a></li>
+                    <li><a href="products.html" class="nav-item"><span class="nav-icon">📦</span><span class="nav-label">Produk</span></a></li>
+                    <li><a href="users.html" class="nav-item"><span class="nav-icon">👥</span><span class="nav-label">Pengguna</span></a></li>
+                    <li><a href="transaction.html" class="nav-item"><span class="nav-icon">💰</span><span class="nav-label">Transaksi</span></a></li>
+                    <li><a href="../index.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-label">Lihat Website</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Admin Content -->
+        <main class="admin-content">
+            <header class="admin-header">
+                <div class="header-search">
+                    <input type="text" placeholder="Cari...">
+                    <button type="submit">🔍</button>
+                </div>
+                <div class="header-actions">
+                    <div class="notifications">
+                        <button class="notification-btn">🔔</button>
+                        <span class="notification-badge">3</span>
+                    </div>
+                    <div class="admin-profile">
+                        <img src="../images/avatar.png" alt="Admin Avatar">
+                        <span>Admin</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="admin-page-content">
+                <div class="page-header">
+                    <h1>Dashboard</h1>
+                    <p class="welcome-message">Selamat datang kembali, Admin!</p>
+                </div>
+                
+                <div class="dashboard-cards">
+                    <div class="dashboard-card">
+                        <div class="card-icon articles">📝</div>
+                        <div class="card-value">42</div>
+                        <div class="card-label">Total Artikel</div>
+                        <div class="card-change positive">+5.2%</div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-icon products">📦</div>
+                        <div class="card-value">128</div>
+                        <div class="card-label">Total Produk</div>
+                        <div class="card-change positive">+12.3%</div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-icon users">👥</div>
+                        <div class="card-value">1,254</div>
+                        <div class="card-label">Total Pengguna</div>
+                        <div class="card-change positive">+8.7%</div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-icon revenue">💰</div>
+                        <div class="card-value">Rp 24.5M</div>
+                        <div class="card-label">Total Pendapatan</div>
+                        <div class="card-change positive">+15.4%</div>
+                    </div>
+                </div>
+
+                <div class="dashboard-charts">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Penjualan</h3>
+                            <div class="chart-period">30 Hari Terakhir</div>
+                        </div>
+                        <div class="chart-content sales-chart">
+                            <!-- Dummy chart using CSS -->
+                            <div class="chart-bars">
+                                <div class="chart-bar" style="height: 30%"></div>
+                                <div class="chart-bar" style="height: 45%"></div>
+                                <div class="chart-bar" style="height: 60%"></div>
+                                <div class="chart-bar" style="height: 75%"></div>
+                                <div class="chart-bar" style="height: 90%"></div>
+                                <div class="chart-bar" style="height: 65%"></div>
+                                <div class="chart-bar" style="height: 50%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Sumber Trafik</h3>
+                            <div class="chart-period">30 Hari Terakhir</div>
+                        </div>
+                        <div class="chart-content traffic-chart">
+                            <!-- Dummy pie chart using CSS -->
+                            <div class="pie-chart">
+                                <div class="pie-segment direct" style="--percentage: 35;"></div>
+                                <div class="pie-segment organic" style="--percentage: 25;"></div>
+                                <div class="pie-segment social" style="--percentage: 20;"></div>
+                                <div class="pie-segment referral" style="--percentage: 15;"></div>
+                                <div class="pie-segment email" style="--percentage: 5;"></div>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item direct">Direct (35%)</div>
+                                <div class="legend-item organic">Organic (25%)</div>
+                                <div class="legend-item social">Social (20%)</div>
+                                <div class="legend-item referral">Referral (15%)</div>
+                                <div class="legend-item email">Email (5%)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recent-activity">
+                    <div class="activity-header">
+                        <h3 class="activity-title">Aktivitas Terbaru</h3>
+                        <a href="#" class="view-all">Lihat Semua →</a>
+                    </div>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon order">📦</div>
+                            <div class="activity-content">
+                                <div class="activity-text"><strong>Pesanan Baru</strong> dari John Doe (ID: #ORD12345)</div>
+                                <div class="activity-time">10 menit yang lalu</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon user">👤</div>
+                            <div class="activity-content">
+                                <div class="activity-text"><strong>Pengguna Baru</strong> telah mendaftar: Jane Smith</div>
+                                <div class="activity-time">45 menit yang lalu</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon product">🛒</div>
+                            <div class="activity-content">
+                                <div class="activity-text"><strong>Produk Baru</strong> telah ditambahkan: Smartphone XYZ Pro</div>
+                                <div class="activity-time">1 jam yang lalu</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon order">📦</div>
+                            <div class="activity-content">
+                                <div class="activity-text"><strong>Pesanan</strong> #ORD12344 telah selesai</div>
+                                <div class="activity-time">3 jam yang lalu</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon user">👤</div>
+                            <div class="activity-content">
+                                <div class="activity-text"><strong>David Johnson</strong> telah memperbarui profilnya</div>
+                                <div class="activity-time">5 jam yang lalu</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

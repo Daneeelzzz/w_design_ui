@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gantungan Kunci Kustom - Himti Store</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/products.css">
+    <style>
+        .customization-options {
+            margin-top: 20px;
+            border: 1px solid #eee;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .custom-text-input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .upload-area {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+            margin-top: 15px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+        .upload-area:hover {
+            border-color: #1e3a8a;
+        }
+        .preview-image {
+            max-width: 100%;
+            max-height: 200px;
+            margin-top: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Himticle</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Beranda</a></li>
+                    <li><a href="../articles/index.html">Artikel</a></li>
+                    <li><a href="index.html" class="active">Produk</a></li>
+                    <li><a href="../products/cart.html" class="cart-icon">Keranjang <span class="cart-count">0</span></a></li>
+                    <li><a href="../account/transactions.html">Masuk</a></li>
+                    <li> <a href="account/profile.html" class="profile-icon" title="Profil Anda" aria-label="Profil">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#333" viewBox="0 0 24 24">
+                                <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+                            </svg>
+                         </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="product-detail">
+                <!-- Product Breadcrumb -->
+                <div class="product-breadcrumb">
+                    <a href="../index.html">Beranda</a> &gt;
+                    <a href="index.html">Produk</a> &gt;
+                    <a href="#">Aksesoris</a> &gt;
+                    <span>Gantungan Kunci Kustom</span>
+                </div>
+
+                <!-- Product Main Info -->
+                <div class="product-main">
+                    <div class="product-gallery">
+                        <div class="main-image">
+                            <img src="/placeholder.svg?height=500&width=500&text=Gantungan+Kunci" alt="Gantungan Kunci Kustom" id="main-product-image">
+                        </div>
+                        <div class="thumbnail-images">
+                            <div class="thumbnail active" data-image="/placeholder.svg?height=500&width=500&text=Gantungan+Kunci">
+                                <img src="/placeholder.svg?height=100&width=100&text=Gantungan+Kunci" alt="Thumbnail 1">
+                            </div>
+                            <div class="thumbnail" data-image="/placeholder.svg?height=500&width=500&text=Desain+1">
+                                <img src="/placeholder.svg?height=100&width=100&text=Desain+1" alt="Thumbnail 2">
+                            </div>
+                            <div class="thumbnail" data-image="/placeholder.svg?height=500&width=500&text=Desain+2">
+                                <img src="/placeholder.svg?height=100&width=100&text=Desain+2" alt="Thumbnail 3">
+                            </div>
+                            <div class="thumbnail" data-image="/placeholder.svg?height=500&width=500&text=Desain+3">
+                                <img src="/placeholder.svg?height=100&width=100&text=Desain+3" alt="Thumbnail 4">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-info-detail">
+                        <div class="product-badge">Kustom</div>
+                        <h1>Gantungan Kunci Kustom</h1>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">78 ulasan</span>
+                        </div>
+                        <div class="product-price-detail">
+                            <span class="current-price">Rp 25.000</span>
+                            <span class="old-price">Rp 30.000</span>
+                            <span class="discount-percentage">-17%</span>
+                        </div>
+                        <div class="product-short-description">
+                            <p>Gantungan kunci kustom dengan desain unik sesuai keinginan Anda. Bahan berkualitas tinggi dengan cetakan yang tahan lama.</p>
+                        </div>
+                        
+                        <!-- Customization Options -->
+                        <div class="customization-options">
+                            <h3>Personalisasi Produk</h3>
+                            
+                            <div class="variant-group">
+                                <label>Bahan:</label>
+                                <div class="variant-options">
+                                    <button class="variant-btn active">Akrilik</button>
+                                    <button class="variant-btn">Kayu</button>
+                                    <button class="variant-btn">Karet</button>
+                                    <button class="variant-btn">Logam</button>
+                                </div>
+                            </div>
+                            
+                            <div class="variant-group">
+                                <label>Ukuran:</label>
+                                <div class="variant-options">
+                                    <button class="variant-btn">Kecil (3cm)</button>
+                                    <button class="variant-btn active">Sedang (5cm)</button>
+                                    <button class="variant-btn">Besar (7cm)</button>
+                                </div>
+                            </div>
+                            
+                            <div class="variant-group">
+                                <label>Bentuk:</label>
+                                <div class="variant-options">
+                                    <button class="variant-btn">Bulat</button>
+                                    <button class="variant-btn active">Persegi</button>
+                                    <button class="variant-btn">Hati</button>
+                                    <button class="variant-btn">Custom</button>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="custom-text">Teks Kustom:</label>
+                                <input type="text" id="custom-text" class="custom-text-input" placeholder="Masukkan teks yang ingin dicetak (maks. 20 karakter)">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Unggah Desain:</label>
+                                <div class="upload-area" id="upload-area">
+                                    <p>Seret & jatuhkan file gambar di sini atau klik untuk memilih</p>
+                                    <input type="file" id="file-input" accept="image/*" style="display: none;">
+                                    <img id="preview-image" class="preview-image" alt="Pratinjau Gambar">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Warna Dominan:</label>
+                                <input type="color" id="color-picker" value="#1e3a8a">
+                            </div>
+                        </div>
+                        
+                        <div class="product-quantity">
+                            <label>Jumlah:</label>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn minus">-</button>
+                                <input type="number" value="1" min="1" max="50">
+                                <button class="quantity-btn plus">+</button>
+                            </div>
+                            <span class="stock-info">Minimal pesan: 1</span>
+                        </div>
+                        <div class="product-actions-detail">
+                            <button class="btn btn-primary add-to-cart-btn">Tambah ke Keranjang</button>
+                            <button class="btn btn-secondary buy-now-btn">Beli Sekarang</button>
+                        </div>
+                        <div class="product-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">SKU:</span>
+                                <span class="meta-value">GK-CUSTOM-001</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Kategori:</span>
+                                <a href="#">Aksesoris</a>, <a href="#">Kustom</a>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Tag:</span>
+                                <a href="#">Gantungan Kunci</a>, <a href="#">Kustom</a>, <a href="#">Hadiah</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Tabs -->
+                <div class="product-tabs">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" data-tab="description">Deskripsi</button>
+                        <button class="tab-btn" data-tab="specifications">Spesifikasi</button>
+                        <button class="tab-btn" data-tab="reviews">Ulasan (78)</button>
+                        <button class="tab-btn" data-tab="custom-guide">Panduan Kustom</button>
+                    </div>
+                    <div class="tabs-content">
+                        <div class="tab-panel active" id="description">
+                            <h2>Deskripsi Produk</h2>
+                            <p>Gantungan kunci kustom adalah cara sempurna untuk mengekspresikan kreativitas Anda atau membuat hadiah unik untuk orang terkasih. Dengan berbagai pilihan bahan, ukuran, dan bentuk, Anda dapat menciptakan gantungan kunci yang benar-benar personal.</p>
+                            
+                            <h3>Fitur Utama</h3>
+                            <ul>
+                                <li>Dapat disesuaikan dengan teks, gambar, dan warna pilihan Anda</li>
+                                <li>Bahan berkualitas tinggi yang tahan lama</li>
+                                <li>Cetakan berkualitas tinggi yang tidak mudah luntur</li>
+                                <li>Berbagai pilihan bentuk dan ukuran</li>
+                                <li>Cocok untuk keperluan pribadi atau sebagai hadiah</li>
+                                <li>Proses produksi cepat (3-5 hari kerja)</li>
+                            </ul>
+                            
+                            <p>Gantungan kunci kustom ini sangat cocok untuk:</p>
+                            <ul>
+                                <li>Hadiah ulang tahun atau anniversary</li>
+                                <li>Souvenir pernikahan atau acara khusus</li>
+                                <li>Promosi bisnis atau branding perusahaan</li>
+                                <li>Koleksi pribadi dengan desain unik</li>
+                                <li>Kenang-kenangan organisasi atau komunitas</li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" id="specifications">
+                            <h2>Spesifikasi Teknis</h2>
+                            <table class="specs-table">
+                                <tr>
+                                    <th colspan="2">Umum</th>
+                                </tr>
+                                <tr>
+                                    <td>Jenis Produk</td>
+                                    <td>Gantungan Kunci Kustom</td>
+                                </tr>
+                                <tr>
+                                    <td>Bahan Tersedia</td>
+                                    <td>Akrilik, Kayu, Karet, Logam</td>
+                                </tr>
+                                <tr>
+                                    <td>Ukuran Tersedia</td>
+                                    <td>Kecil (3cm), Sedang (5cm), Besar (7cm)</td>
+                                </tr>
+                                <tr>
+                                    <td>Bentuk Tersedia</td>
+                                    <td>Bulat, Persegi, Hati, Custom</td>
+                                </tr>
+                                <tr>
+                                    <th colspan="2">Kustomisasi</th>
+                                </tr>
+                                <tr>
+                                    <td>Maks. Karakter Teks</td>
+                                    <td>20 karakter</td>
+                                </tr>
+                                <tr>
+                                    <td>Format Gambar</td>
+                                    <td>JPG, PNG (min. 300dpi)</td>
+                                </tr>
+                                <tr>
+                                    <td>Area Cetak</td>
+                                    <td>Seluruh permukaan (kecuali bagian ring)</td>
+                                </tr>
+                                <tr>
+                                    <td>Warna Cetak</td>
+                                    <td>Full color</td>
+                                </tr>
+                                <tr>
+                                    <th colspan="2">Produksi</th>
+                                </tr>
+                                <tr>
+                                    <td>Waktu Produksi</td>
+                                    <td>3-5 hari kerja</td>
+                                </tr>
+                                <tr>
+                                    <td>Minimal Pesanan</td>
+                                    <td>1 pcs</td>
+                                </tr>
+                                <tr>
+                                    <td>Ketahanan</td>
+                                    <td>Tahan air dan tidak mudah luntur</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="tab-panel" id="custom-guide">
+                            <h2>Panduan Kustomisasi</h2>
+                            <div class="guide-section">
+                                <h3>1. Pilih Bahan</h3>
+                                <p>Kami menyediakan 4 pilihan bahan:</p>
+                                <ul>
+                                    <li><strong>Akrilik</strong>: Tampilan modern dan glossy, cocok untuk desain warna-warni</li>
+                                    <li><strong>Kayu</strong>: Kesan natural dan klasik, cocok untuk desain minimalis</li>
+                                    <li><strong>Karet</strong>: Fleksibel dan tahan banting, cocok untuk penggunaan sehari-hari</li>
+                                    <li><strong>Logam</strong>: Kesan premium dan kuat, cocok untuk desain elegan</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="guide-section">
+                                <h3>2. Pilih Ukuran</h3>
+                                <p>Ukuran yang tersedia:</p>
+                                <ul>
+                                    <li><strong>Kecil (3cm)</strong>: Ringan dan praktis</li>
+                                    <li><strong>Sedang (5cm)</strong>: Ukuran standar yang paling populer</li>
+                                    <li><strong>Besar (7cm)</strong>: Lebih mencolok dengan area cetak yang lebih luas</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="guide-section">
+                                <h3>3. Unggah Desain</h3>
+                                <p>Untuk hasil terbaik:</p>
+                                <ul>
+                                    <li>Gunakan gambar dengan resolusi tinggi (min. 300dpi)</li>
+                                    <li>Format file: JPG atau PNG dengan latar belakang transparan jika diperlukan</li>
+                                    <li>Untuk teks, gunakan font yang jelas dan mudah dibaca</li>
+                                    <li>Hindari elemen yang terlalu kecil atau detail rumit</li>
+                                </ul>
+                                <p>Tim kami akan meninjau desain Anda dan mengkonfirmasi sebelum produksi.</p>
+                            </div>
+                            
+                            <div class="guide-section">
+                                <h3>4. Proses Produksi</h3>
+                                <p>Setelah Anda menyelesaikan pemesanan:</p>
+                                <ol>
+                                    <li>Desain akan diverifikasi oleh tim kami (1 hari kerja)</li>
+                                    <li>Anda akan menerima proofing digital untuk persetujuan</li>
+                                    <li>Produksi dilakukan setelah desain disetujui (2-3 hari kerja)</li>
+                                    <li>Produk dikirim setelah selesai diproduksi</li>
+                                </ol>
+                                <p>Total waktu proses: 3-5 hari kerja (belum termasuk pengiriman)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Products -->
+                <div class="related-products">
+                    <h2>Produk Terkait</h2>
+                    <div class="product-grid related">
+                        <!-- Related Product 1 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <a href="product-detail.html">
+                                    <img src="/placeholder.svg?height=300&width=300&text=Pin+Kustom" alt="Pin Kustom">
+                                </a>
+                                <div class="product-actions">
+                                    <button class="action-btn add-to-cart">Tambah ke Keranjang</button>
+                                    <button class="action-btn quick-view">Lihat Cepat</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Aksesoris</span>
+                                <h3><a href="product-detail.html">Pin Kustom</a></h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-count">(45)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">Rp 15.000</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Related Product 2 -->
+                        <div class="product-card">
+                            <div class="product-badge sale">Diskon 20%</div>
+                            <div class="product-image">
+                                <a href="product-detail.html">
+                                    <img src="/placeholder.svg?height=300&width=300&text=Gelang+Karet" alt="Gelang Karet Kustom">
+                                </a>
+                                <div class="product-actions">
+                                    <button class="action-btn add-to-cart">Tambah ke Keranjang</button>
+                                    <button class="action-btn quick-view">Lihat Cepat</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Aksesoris</span>
+                                <h3><a href="product-detail.html">Gelang Karet Kustom</a></h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-count">(62)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">Rp 20.000</span>
+                                    <span class="old-price">Rp 25.000</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Related Product 3 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <a href="product-detail.html">
+                                    <img src="/placeholder.svg?height=300&width=300&text=Tumbler+Kustom" alt="Tumbler Kustom">
+                                </a>
+                                <div class="product-actions">
+                                    <button class="action-btn add-to-cart">Tambah ke Keranjang</button>
+                                    <button class="action-btn quick-view">Lihat Cepat</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Produk Kustom</span>
+                                <h3><a href="product-detail.html">Tumbler Kustom</a></h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-count">(38)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">Rp 85.000</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Related Product 4 -->
+                        <div class="product-card">
+                            <div class="product-badge">Baru</div>
+                            <div class="product-image">
+                                <a href="product-detail.html">
+                                    <img src="/placeholder.svg?height=300&width=300&text=Notebook+Kustom" alt="Notebook Kustom">
+                                </a>
+                                <div class="product-actions">
+                                    <button class="action-btn add-to-cart">Tambah ke Keranjang</button>
+                                    <button class="action-btn quick-view">Lihat Cepat</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Produk Kustom</span>
+                                <h3><a href="product-detail.html">Notebook Kustom</a></h3>
+                                <div class="product-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-count">(27)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">Rp 45.000</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>ShopArticle</h2>
+                    <p>Belanja & Baca dalam Satu Platform</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>Navigasi</h3>
+                        <ul>
+                            <li><a href="../index.html">Beranda</a></li>
+                            <li><a href="../articles/index.html">Artikel</a></li>
+                            <li><a href="index.html">Produk</a></li>
+                            <li><a href="../cart/index.html">Keranjang</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Akun</h3>
+                        <ul>
+                            <li><a href="#">Masuk</a></li>
+                            <li><a href="#">Daftar</a></li>
+                            <li><a href="../account/transactions.html">Riwayat Transaksi</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Hubungi Kami</h3>
+                        <ul>
+                            <li>Email: info@shoparticle.com</li>
+                            <li>Telepon: +62 123 4567 890</li>
+                            <li>Alamat: Jl. Contoh No. 123, Jakarta</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ShopArticle. Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Product Detail Page JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Thumbnail image click
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            const mainImage = document.getElementById('main-product-image');
+            
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', function() {
+                    // Remove active class from all thumbnails
+                    thumbnails.forEach(thumb => thumb.classList.remove('active'));
+                    
+                    // Add active class to clicked thumbnail
+                    this.classList.add('active');
+                    
+                    // Update main image
+                    const newImageSrc = this.getAttribute('data-image');
+                    mainImage.src = newImageSrc;
+                });
+            });
+            
+            // Quantity selector
+            const minusBtn = document.querySelector('.quantity-btn.minus');
+            const plusBtn = document.querySelector('.quantity-btn.plus');
+            const quantityInput = document.querySelector('.quantity-selector input');
+            
+            minusBtn.addEventListener('click', function() {
+                let value = parseInt(quantityInput.value);
+                if (value > 1) {
+                    quantityInput.value = value - 1;
+                }
+            });
+            
+            plusBtn.addEventListener('click', function() {
+                let value = parseInt(quantityInput.value);
+                let max = parseInt(quantityInput.getAttribute('max'));
+                if (value < max) {
+                    quantityInput.value = value + 1;
+                }
+            });
+            
+            // Variant selection
+            const variantBtns = document.querySelectorAll('.variant-btn');
+            
+            variantBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons in the same group
+                    const parentGroup = this.closest('.variant-options');
+                    const buttons = parentGroup.querySelectorAll('.variant-btn');
+                    
+                    buttons.forEach(button => button.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                });
+            });
+            
+            // Tabs
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabPanels = document.querySelectorAll('.tab-panel');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all tabs and panels
+                    tabBtns.forEach(tab => tab.classList.remove('active'));
+                    tabPanels.forEach(panel => panel.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Show corresponding panel
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // File upload functionality
+            const uploadArea = document.getElementById('upload-area');
+            const fileInput = document.getElementById('file-input');
+            const previewImage = document.getElementById('preview-image');
+            
+            uploadArea.addEventListener('click', function() {
+                fileInput.click();
+            });
+            
+            fileInput.addEventListener('change', function(e) {
+                if (e.target.files.length > 0) {
+                    const file = e.target.files[0];
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(event) {
+                        previewImage.src = event.target.result;
+                        previewImage.style.display = 'block';
+                        uploadArea.querySelector('p').textContent = 'Gambar terpilih: ' + file.name;
+                    };
+                    
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            // Drag and drop functionality
+            uploadArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                this.style.borderColor = '#1e3a8a';
+                this.style.backgroundColor = '#f0f4ff';
+            });
+            
+            uploadArea.addEventListener('dragleave', function(e) {
+                e.preventDefault();
+                this.style.borderColor = '#ccc';
+                this.style.backgroundColor = '';
+            });
+            
+            uploadArea.addEventListener('drop', function(e) {
+                e.preventDefault();
+                this.style.borderColor = '#ccc';
+                this.style.backgroundColor = '';
+                
+                if (e.dataTransfer.files.length > 0) {
+                    fileInput.files = e.dataTransfer.files;
+                    const event = new Event('change');
+                    fileInput.dispatchEvent(event);
+                }
+            });
+            
+            // Add to cart button
+            const addToCartBtn = document.querySelector('.add-to-cart-btn');
+            
+            addToCartBtn.addEventListener('click', function() {
+                // Get selected options
+                const material = document.querySelector('.variant-group:nth-child(1) .variant-btn.active').textContent;
+                const size = document.querySelector('.variant-group:nth-child(2) .variant-btn.active').textContent;
+                const shape = document.querySelector('.variant-group:nth-child(3) .variant-btn.active').textContent;
+                const customText = document.getElementById('custom-text').value;
+                const quantity = parseInt(quantityInput.value);
+                
+                // Validate custom text
+                if (customText.length > 20) {
+                    alert('Teks kustom maksimal 20 karakter');
+                    return;
+                }
+                
+                // Validate file upload
+                if (!fileInput.files.length && !customText) {
+                    alert('Silakan unggah gambar atau masukkan teks kustom');
+                    return;
+                }
+                
+                // Show notification
+                let message = `${quantity}x Gantungan Kunci Kustom (${material}, ${size}, ${shape})`;
+                if (customText) {
+                    message += ` dengan teks "${customText}"`;
+                }
+                if (fileInput.files.length) {
+                    message += ` dan gambar kustom`;
+                }
+                message += ' ditambahkan ke keranjang!';
+                
+                showNotification(message);
+                
+                // Update cart count
+                const cartCount = document.querySelector('.cart-count');
+                let count = parseInt(cartCount.textContent);
+                count += quantity;
+                cartCount.textContent = count;
+            });
+            
+            // Buy now button
+            const buyNowBtn = document.querySelector('.buy-now-btn');
+            
+            buyNowBtn.addEventListener('click', function() {
+                // Redirect to checkout page (in a real app)
+                window.location.href = '../cart/checkout.html';
+            });
+            
+            // Notification function
+            function showNotification(message) {
+                // Create notification element if it doesn't exist
+                let notification = document.querySelector('.notification');
+                
+                if (!notification) {
+                    notification = document.createElement('div');
+                    notification.className = 'notification';
+                    document.body.appendChild(notification);
+                    
+                    // Add styles
+                    notification.style.position = 'fixed';
+                    notification.style.bottom = '20px';
+                    notification.style.right = '20px';
+                    notification.style.backgroundColor = '#1e3a8a';
+                    notification.style.color = 'white';
+                    notification.style.padding = '12px 20px';
+                    notification.style.borderRadius = '4px';
+                    notification.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+                    notification.style.zIndex = '1000';
+                    notification.style.transform = 'translateY(100px)';
+                    notification.style.opacity = '0';
+                    notification.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+                }
+                
+                // Set message
+                notification.textContent = message;
+                
+                // Show notification
+                setTimeout(() => {
+                    notification.style.transform = 'translateY(0)';
+                    notification.style.opacity = '1';
+                }, 10);
+                
+                // Hide notification after 3 seconds
+                setTimeout(() => {
+                    notification.style.transform = 'translateY(100px)';
+                    notification.style.opacity = '0';
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>

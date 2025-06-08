@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Produk - Admin Himti Store</title>
+    <link rel="stylesheet" href="../css/amin/admin-dashboard.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Admin Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <h2>Himti Store</h2>
+                <p>Admin Panel</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-item"><span class="nav-icon">📊</span><span class="nav-label">Dashboard</span></a></li>
+                    <li><a href="articles.html" class="nav-item"><span class="nav-icon">📝</span><span class="nav-label">Artikel</span></a></li>
+                    <li><a href="products.html" class="nav-item active"><span class="nav-icon">📦</span><span class="nav-label">Produk</span></a></li>
+                    <li><a href="users.html" class="nav-item"><span class="nav-icon">👥</span><span class="nav-label">Pengguna</span></a></li>
+                    <li><a href="transaction.html" class="nav-item"><span class="nav-icon">💰</span><span class="nav-label">Transaksi</span></a></li>
+                    <li><a href="../index.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-label">Lihat Website</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Admin Content -->
+        <main class="admin-content">
+            <header class="admin-header">
+                <div class="header-search">
+                    <input type="text" placeholder="Cari...">
+                    <button type="submit">🔍</button>
+                </div>
+                <div class="header-actions">
+                    <div class="notifications">
+                        <button class="notification-btn">🔔</button>
+                        <span class="notification-badge">3</span>
+                    </div>
+                    <div class="admin-profile">
+                        <img src="../images/avatar.png" alt="Admin Avatar">
+                        <span>Admin</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="admin-page-content">
+                <div class="page-header">
+                    <h1>Kelola Produk</h1>
+                    <button class="btn btn-primary add-new-btn">+ Tambah Produk Baru</button>
+                </div>
+                
+                <!-- Product Filters -->
+                <div class="content-filters">
+                    <div class="filter-group">
+                        <label for="category-filter">Kategori:</label>
+                        <select id="category-filter">
+                            <option value="all">Semua Kategori</option>
+                            <option value="elektronik">Elektronik</option>
+                            <option value="fashion">Fashion</option>
+                            <option value="kesehatan">Kesehatan & Kecantikan</option>
+                            <option value="rumah">Rumah & Dapur</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="stock-filter">Stok:</label>
+                        <select id="stock-filter">
+                            <option value="all">Semua Status</option>
+                            <option value="in-stock">Tersedia</option>
+                            <option value="low-stock">Stok Menipis</option>
+                            <option value="out-of-stock">Habis</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group search">
+                        <input type="text" placeholder="Cari produk...">
+                        <button type="submit">Cari</button>
+                    </div>
+                </div>
+                
+                <!-- Bulk Actions -->
+                <div class="bulk-actions">
+                    <select class="bulk-select">
+                        <option value="">Aksi Massal</option>
+                        <option value="publish">Publikasikan</option>
+                        <option value="unpublish">Batalkan Publikasi</option>
+                        <option value="delete">Hapus</option>
+                    </select>
+                    <button class="btn btn-apply">Terapkan</button>
+                </div>
+                
+                <!-- Products Table -->
+                <div class="data-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th width="40px">
+                                    <input type="checkbox" id="select-all">
+                                </th>
+                                <th>Produk</th>
+                                <th width="150px">Kategori</th>
+                                <th width="120px">Harga</th>
+                                <th width="80px">Stok</th>
+                                <th width="120px">Status</th>
+                                <th width="120px">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Product 1 -->
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="row-checkbox">
+                                </td>
+                                <td>
+                                    <div class="item-info">
+                                        <img src="../image/ipong.jpeg" alt="Ipong 99">
+                                        <div>
+                                            <div class="item-title">Ipong 99 Pro Ultramax</div>
+                                            <div class="item-meta">SKU: SP-XYZ-PRO-256</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Elektronik</td>
+                                <td>Rp 44.999.000</td>
+                                <td>24</td>
+                                <td><span class="status-badge published">Tersedia</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit" title="Edit">✏️</button>
+                                        <button class="action-btn view" title="Lihat">👁️</button>
+                                        <button class="action-btn delete" title="Hapus">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                            <!-- Product 2 -->
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="row-checkbox">
+                                </td>
+                                <td>
+                                    <div class="item-info">
+                                        <img src="../image/produk_ganci.jpeg" alt=" Ganci Kustom ">
+                                        <div>
+                                            <div class="item-title">Ganci Kustom</div>
+                                            <div class="item-meta">SKU: HP-BT-001</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Elektronik</td>
+                                <td>Rp 799.000</td>
+                                <td>45</td>
+                                <td><span class="status-badge published">Tersedia</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit" title="Edit">✏️</button>
+                                        <button class="action-btn view" title="Lihat">👁️</button>
+                                        <button class="action-btn delete" title="Hapus">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                            <!-- Product 3 -->
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="row-checkbox">
+                                </td>
+                                <td>
+                                    <div class="item-info">
+                                        <img src="../image/Produk.jpg" alt="PDH HIMTI">
+                                        <div>
+                                            <div class="item-title">PDH HIMTI</div>
+                                            <div class="item-meta">SKU: SK-VC-30ML</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Kesehatan & Kecantikan</td>
+                                <td>Rp 189.000</td>
+                                <td>78</td>
+                                <td><span class="status-badge published">Tersedia</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit" title="Edit">✏️</button>
+                                        <button class="action-btn view" title="Lihat">👁️</button>
+                                        <button class="action-btn delete" title="Hapus">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                            <!-- Product 4 -->
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="row-checkbox">
+                                </td>
+                                <td>
+                                    <div class="item-info">
+                                        <img src="../image/google pixel2.jpeg" alt="HANDPHONE google pixel 2">
+                                        <div>
+                                            <div class="item-title">Google Pixel</div>
+                                            <div class="item-meta">SKU: KT-AF-001</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Rumah & Dapur</td>
+                                <td>Rp 1.299.000</td>
+                                <td>12</td>
+                                <td><span class="status-badge low-stock">Stok Menipis</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit" title="Edit">✏️</button>
+                                        <button class="action-btn view" title="Lihat">👁️</button>
+                                        <button class="action-btn delete" title="Hapus">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                            <!-- Product 5 -->
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="row-checkbox">
+                                </td>
+                                <td>
+                                    <div class="item-info">
+                                        <img src="../image/produk_kipas.jpg" alt="Kipas Kustom HIMTI">
+                                        <div>
+                                            <div class="item-title"> Kipas Kustom HIMTI</div>
+                                            <div class="item-meta">SKU: SH-SN-42-WHT</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Fashion</td>
+                                <td>Rp 459.000</td>
+                                <td>0</td>
+                                <td><span class="status-badge out-of-stock">Habis</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit" title="Edit">✏️</button>
+                                        <button class="action-btn view" title="Lihat">👁️</button>
+                                        <button class="action-btn delete" title="Hapus">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Pagination and Table Info -->
+                <div class="table-footer">
+                    <div class="table-info">
+                        Menampilkan 1 sampai 5 dari 15 produk
+                    </div>
+                    <div class="pagination">
+                        <button class="btn btn-pagination" disabled>
+                            &laquo; Sebelumnya
+                        </button>
+                        <button class="btn btn-pagination active">1</button>
+                        <button class="btn btn-pagination">2</button>
+                        <button class="btn btn-pagination">3</button>
+                        <button class="btn btn-pagination">
+                            Selanjutnya &raquo;
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Select all checkbox
+            const selectAllCheckbox = document.getElementById('select-all');
+            const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+            
+            selectAllCheckbox.addEventListener('change', function() {
+                rowCheckboxes.forEach(checkbox => {
+                    checkbox.checked = this.checked;
+                });
+            });
+            
+            // Filter functionality
+            const categoryFilter = document.getElementById('category-filter');
+            const stockFilter = document.getElementById('stock-filter');
+            const searchInput = document.querySelector('.filter-group.search input');
+            const searchButton = document.querySelector('.filter-group.search button');
+            
+            // Add event listeners for filters
+            categoryFilter.addEventListener('change', function() {
+                console.log('Category filter changed:', this.value);
+            });
+            
+            stockFilter.addEventListener('change', function() {
+                console.log('Stock filter changed:', this.value);
+            });
+            
+            searchButton.addEventListener('click', function() {
+                console.log('Search button clicked:', searchInput.value);
+            });
+            
+            // Bulk actions
+            const bulkSelect = document.querySelector('.bulk-select');
+            const applyButton = document.querySelector('.btn-apply');
+            
+            applyButton.addEventListener('click', function() {
+                const selectedAction = bulkSelect.value;
+                if (selectedAction) {
+                    const selectedCount = document.querySelectorAll('.row-checkbox:checked').length;
+                    if (selectedCount > 0) {
+                        alert(`Aksi "${selectedAction}" akan diterapkan pada ${selectedCount} produk`);
+                    } else {
+                        alert('Pilih setidaknya satu produk terlebih dahulu');
+                    }
+                }
+            });
+            
+            // Action buttons
+            const editButtons = document.querySelectorAll('.action-btn.edit');
+            const viewButtons = document.querySelectorAll('.action-btn.view');
+            const deleteButtons = document.querySelectorAll('.action-btn.delete');
+            
+            editButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const row = this.closest('tr');
+                    const title = row.querySelector('.item-title').textContent;
+                    alert(`Edit product: ${title}`);
+                });
+            });
+            
+            viewButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const row = this.closest('tr');
+                    const title = row.querySelector('.item-title').textContent;
+                    alert(`View product: ${title}`);
+                });
+            });
+            
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const row = this.closest('tr');
+                    const title = row.querySelector('.item-title').textContent;
+                    if (confirm(`Are you sure you want to delete product: ${title}?`)) {
+                        row.remove();
+                    }
+                });
+            });
+            
+            // Add new product button
+            const addNewButton = document.querySelector('.add-new-btn');
+            
+            addNewButton.addEventListener('click', function() {
+                alert('Add new product form would open here');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Transaksi - Admin Himti Store</title>
+    <link rel="stylesheet" href="../css/amin/admin-dashboard.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Admin Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <h2>Himti Store</h2>
+                <p>Admin Panel</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-item"><span class="nav-icon">📊</span><span class="nav-label">Dashboard</span></a></li>
+                    <li><a href="articles.html" class="nav-item"><span class="nav-icon">📝</span><span class="nav-label">Artikel</span></a></li>
+                    <li><a href="products.html" class="nav-item"><span class="nav-icon">📦</span><span class="nav-label">Produk</span></a></li>
+                    <li><a href="users.html" class="nav-item"><span class="nav-icon">👥</span><span class="nav-label">Pengguna</span></a></li>
+                    <li><a href="transaction.html" class="nav-item active"><span class="nav-icon">💰</span><span class="nav-label">Transaksi</span></a></li>
+                    <li><a href="../index.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-label">Lihat Website</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Admin Content -->
+        <main class="admin-content">
+            <header class="admin-header">
+                <div class="header-search">
+                    <input type="text" placeholder="Cari...">
+                    <button type="submit">🔍</button>
+                </div>
+                <div class="header-actions">
+                    <div class="notifications">
+                        <button class="notification-btn">🔔</button>
+                        <span class="notification-badge">3</span>
+                    </div>
+                    <div class="admin-profile">
+                        <img src="../images/avatar.png" alt="Admin Avatar">
+                        <span>Admin</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="admin-page-content">
+                <div class="page-header">
+                    <h1>Kelola Transaksi</h1>
+                    <p class="welcome-message">Kelola semua transaksi pelanggan</p>
+                </div>
+                
+                <!-- Quick Stats Cards -->
+                <div class="dashboard-cards">
+                    <div class="dashboard-card">
+                        <div class="card-icon revenue">💰</div>
+                        <div class="card-value">Rp 24.5M</div>
+                        <div class="card-label">Total Pendapatan</div>
+                        <div class="card-change positive">+15.4%</div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-icon order">📦</div>
+                        <div class="card-value">128</div>
+                        <div class="card-label">Total Transaksi</div>
+                        <div class="card-change positive">+12.3%</div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-icon pending">⏳</div>
+                        <div class="card-value">18</div>
+                        <div class="card-label">Menunggu Pembayaran</div>
+                        <div class="card-change negative">-2.1%</div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-icon completed">✅</div>
+                        <div class="card-value">89</div>
+                        <div class="card-label">Selesai</div>
+                        <div class="card-change positive">+8.7%</div>
+                    </div>
+                </div>
+
+                <!-- Transaction Management Section -->
+                <div class="content-section">
+                    <div class="section-header">
+                        <h3>Daftar Transaksi</h3>
+                        <div class="section-actions">
+                            <div class="filter-group">
+                                <label for="status-filter">Status:</label>
+                                <select id="status-filter">
+                                    <option value="all">Semua Status</option>
+                                    <option value="pending">Menunggu Pembayaran</option>
+                                    <option value="processing">Diproses</option>
+                                    <option value="shipped">Dikirim</option>
+                                    <option value="completed">Selesai</option>
+                                    <option value="cancelled">Dibatalkan</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label for="date-filter">Periode:</label>
+                                <select id="date-filter">
+                                    <option value="all">Semua Waktu</option>
+                                    <option value="today">Hari Ini</option>
+                                    <option value="week">Minggu Ini</option>
+                                    <option value="month">Bulan Ini</option>
+                                    <option value="custom">Kustom</option>
+                                </select>
+                            </div>
+                            <div class="search-group">
+                                <input type="text" placeholder="Cari transaksi...">
+                                <button type="submit">🔍</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="data-table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" id="select-all"></th>
+                                    <th>ID Transaksi</th>
+                                    <th>Pelanggan</th>
+                                    <th>Tanggal</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox" class="row-checkbox"></td>
+                                    <td>#ORD12345</td>
+                                    <td>
+                                        <div class="user-info">
+                                            <img src="../images/avatar.png" alt="Customer Avatar">
+                                            <div>
+                                                <div class="user-name">John Doe</div>
+                                                <div class="user-email">john.doe@example.com</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>12 Mei 2025</td>
+                                    <td>Rp 5.818.000</td>
+                                    <td><span class="status-badge shipped">Dikirim</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="action-btn edit">✏️</button>
+                                            <button class="action-btn view">👁️</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="row-checkbox"></td>
+                                    <td>#ORD12344</td>
+                                    <td>
+                                        <div class="user-info">
+                                            <img src="../images/avatar.png" alt="Customer Avatar">
+                                            <div>
+                                                <div class="user-name">Jane Smith</div>
+                                                <div class="user-email">jane.smith@example.com</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>10 Mei 2025</td>
+                                    <td>Rp 398.000</td>
+                                    <td><span class="status-badge completed">Selesai</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="action-btn edit">✏️</button>
+                                            <button class="action-btn view">👁️</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="row-checkbox"></td>
+                                    <td>#ORD12343</td>
+                                    <td>
+                                        <div class="user-info">
+                                            <img src="../images/avatar.png" alt="Customer Avatar">
+                                            <div>
+                                                <div class="user-name">David Johnson</div>
+                                                <div class="user-email">david.johnson@example.com</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>8 Mei 2025</td>
+                                    <td>Rp 1.319.000</td>
+                                    <td><span class="status-badge pending">Menunggu Pembayaran</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="action-btn edit">✏️</button>
+                                            <button class="action-btn view">👁️</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="row-checkbox"></td>
+                                    <td>#ORD12342</td>
+                                    <td>
+                                        <div class="user-info">
+                                            <img src="../images/avatar.png" alt="Customer Avatar">
+                                            <div>
+                                                <div class="user-name">Sarah Williams</div>
+                                                <div class="user-email">sarah.williams@example.com</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>5 Mei 2025</td>
+                                    <td>Rp 479.000</td>
+                                    <td><span class="status-badge cancelled">Dibatalkan</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="action-btn edit">✏️</button>
+                                            <button class="action-btn view">👁️</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="row-checkbox"></td>
+                                    <td>#ORD12341</td>
+                                    <td>
+                                        <div class="user-info">
+                                            <img src="../images/avatar.png" alt="Customer Avatar">
+                                            <div>
+                                                <div class="user-name">Michael Brown</div>
+                                                <div class="user-email">michael.brown@example.com</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>3 Mei 2025</td>
+                                    <td>Rp 2.499.000</td>
+                                    <td><span class="status-badge processing">Diproses</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="action-btn edit">✏️</button>
+                                            <button class="action-btn view">👁️</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="pagination">
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#" class="next">Selanjutnya &raquo;</a>
+                    </div>
+                </div>
+                
+                <!-- Recent Activity Section -->
+                <div class="recent-activity">
+                    <div class="activity-header">
+                        <h3 class="activity-title">Aktivitas Transaksi Terbaru</h3>
+                        <a href="#" class="view-all">Lihat Semua →</a>
+                    </div>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon order">📦</div>
+                            <div class="activity-content">
+                                <div class="activity-text"><strong>Pesanan Baru</strong> #ORD12346 dari Robert Taylor</div>
+                                <div class="activity-time">15 menit yang lalu</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon payment">💳</div>
+                            <div class="activity-content">
+                                <div class="activity-text"><strong>Pembayaran diterima</strong> untuk #ORD12345</div>
+                                <div class="activity-time">1 jam yang lalu</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon shipping">🚚</div>
+                            <div class="activity-content">
+                                <div class="activity-text"><strong>Pesanan dikirim</strong> #ORD12344 ke Jane Smith</div>
+                                <div class="activity-time">3 jam yang lalu</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon completed">✅</div>
+                            <div class="activity-content">
+                                <div class="activity-text"><strong>Pesanan selesai</strong> #ORD12342 oleh Sarah Williams</div>
+                                <div class="activity-time">5 jam yang lalu</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon cancelled">❌</div>
+                            <div class="activity-content">
+                                <div class="activity-text"><strong>Pesanan dibatalkan</strong> #ORD12340 oleh Admin</div>
+                                <div class="activity-time">8 jam yang lalu</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

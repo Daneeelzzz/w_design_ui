@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HIMTI GOING: Kunjungan Industri | HIMTI Store</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/articles.css">
+  <style>
+    .hero-banner {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                  url('https://source.unsplash.com/1600x900/?tech,company,office');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+    
+    .hero-title {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .company-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+    
+    .company-header {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      background: #f8f9fa;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .company-logo {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-right: 20px;
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    
+    .company-body {
+      padding: 20px;
+    }
+    
+    .photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+    
+    .gallery-item {
+      height: 180px;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    
+    .highlight-box {
+      background: #f0f7ff;
+      border-left: 4px solid #4285F4;
+      padding: 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 25px 0;
+    }
+    
+    .testimonial-card {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin: 20px 0;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      margin-top: 15px;
+    }
+    
+    .testimonial-author img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 15px;
+      object-fit: cover;
+    }
+    
+    @media (max-width: 768px) {
+      .company-header {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .company-logo {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+      
+      .hero-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <h1>HIMTI Store</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Beranda</a></li>
+          <li><a href="index.html" class="active">Artikel</a></li>
+          <li><a href="../products/index.html">Produk</a></li>
+          <li><a href="../products/cart.html">Keranjang <span class="cart-count">0</span></a></li>
+          <li><a href="../account/login.html">Masuk</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="article-detail">
+      <div class="container">
+        <div class="article-header-detail">
+          <div class="article-meta-detail">
+            <span class="article-category">Kegiatan HIMTI</span>
+            <span class="article-date">15 Juni 2025</span>
+            <span class="article-read-time">8 menit baca</span>
+          </div>
+        </div>
+        
+        <div class="hero-banner">
+          <h1 class="hero-title">HIMTI GOING 2025</h1>
+          <p class="hero-subtitle">Kunjungan Industri Mahasiswa Teknik Informatika ke Perusahaan Teknologi Terkemuka</p>
+        </div>
+
+        <div class="article-content">
+          <p>Himpunan Mahasiswa Teknik Informatika (HIMTI) kembali menyelenggarakan program tahunan <strong>HIMTI GOING</strong>, sebuah kegiatan kunjungan industri eksklusif bagi mahasiswa TI. Tahun ini, sebanyak 40 mahasiswa terpilih berkesempatan mengunjungi markas besar perusahaan teknologi ternama di Jakarta selama 3 hari penuh (10-12 Juni 2025).</p>
+          
+          <div class="highlight-box">
+            <h3>Tujuan HIMTI GOING 2025</h3>
+            <ul>
+              <li>Memperluas wawasan industri teknologi terkini</li>
+              <li>Membangun jaringan dengan profesional di bidang IT</li>
+              <li>Melihat langsung penerapan ilmu yang dipelajari di kampus</li>
+              <li>Menginspirasi mahasiswa dalam pengembangan karir</li>
+            </ul>
+          </div>
+          
+          <h2>Perusahaan yang Dikunjungi</h2>
+          
+          <div class="company-card">
+            <div class="company-header">
+              <img src="https://source.unsplash.com/200x200/?google,logo" alt="Google Logo" class="company-logo">
+              <div>
+                <h3>Google Indonesia</h3>
+                <p>SCBD, Jakarta</p>
+              </div>
+            </div>
+            <div class="company-body">
+              <p>Kunjungan pertama membawa peserta ke kantor Google Indonesia. Mahasiswa mendapatkan insight tentang:</p>
+              <ul>
+                <li>Teknologi Cloud Computing terkini</li>
+                <li>Kultur kerja di perusahaan teknologi global</li>
+                <li>Peluang karir dan program magang</li>
+              </ul>
+              
+              <div class="photo-gallery">
+                <div class="gallery-item">
+                  <img src="https://source.unsplash.com/600x400/?google,office,indonesia" alt="Kunjungan Google">
+                </div>
+                <div class="gallery-item">
+                  <img src="https://source.unsplash.com/600x400/?workshop,google" alt="Workshop Google">
+                </div>
+                <div class="gallery-item">
+                  <img src="https://source.unsplash.com/600x400/?group,discussion,google" alt="Diskusi dengan Engineer Google">
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="company-card">
+            <div class="company-header">
+              <img src="https://source.unsplash.com/200x200/?startup,logo" alt="Startup Logo" class="company-logo">
+              <div>
+                <h3>BukaTech (Startup Unicorn Indonesia)</h3>
+                <p>Kuningan, Jakarta</p>
+              </div>
+            </div>
+            <div class="company-body">
+              <p>Hari kedua mengunjungi BukaTech, startup decacorn asal Indonesia. Peserta belajar tentang:</p>
+              <ul>
+                <li>Pengembangan produk digital skala besar</li>
+                <li>Manajemen tim engineering</li>
+                <li>Strategi ekspansi startup</li>
+              </ul>
+              
+              <div class="photo-gallery">
+                <div class="gallery-item">
+                  <img src="https://source.unsplash.com/600x400/?startup,office,indonesia" alt="Kantor BukaTech">
+                </div>
+                <div class="gallery-item">
+                  <img src="https://source.unsplash.com/600x400/?tech,team,meeting" alt="Sesi Diskusi">
+                </div>
+                <div class="gallery-item">
+                  <img src="https://source.unsplash.com/600x400/?presentation,startup" alt="Presentasi Produk">
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="company-card">
+            <div class="company-header">
+              <img src="https://source.unsplash.com/200x200/?bank,logo" alt="Bank Logo" class="company-logo">
+              <div>
+                <h3>Bank Digital Nusantara</h3>
+                <p>Sudirman, Jakarta</p>
+              </div>
+            </div>
+            <div class="company-body">
+              <p>Hari terakhir mengunjungi Bank Digital Nusantara untuk melihat penerapan TI di sektor finansial:</p>
+              <ul>
+                <li>Sistem keamanan perbankan digital</li>
+                <li>Implementasi blockchain</li>
+                <li>Pengembangan aplikasi mobile banking</li>
+              </ul>
+              
+              <div class="photo-gallery">
+                <div class="gallery-item">
+                  <img src="https://source.unsplash.com/600x400/?bank,data,center" alt="Data Center Bank">
+                </div>
+                <div class="gallery-item">
+                  <img src="https://source.unsplash.com/600x400/?cyber,security,bank" alt="Demo Keamanan">
+                </div>
+                <div class="gallery-item">
+                  <img src="https://source.unsplash.com/600x400/?fintech,team" alt="Tim IT Bank">
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <h2>Testimoni Peserta</h2>
+          
+          <div class="testimonial-card">
+            <p>"HIMTI GOING memberikan pengalaman langsung yang tidak bisa didapatkan di kelas. Saya jadi memahami bagaimana teori algoritma yang kami pelajari diaplikasikan dalam produk skala besar seperti Google Search."</p>
+            <div class="testimonial-author">
+              <img src="https://source.unsplash.com/100x100/?male,student" alt="Andi Wijaya">
+              <div>
+                <h4>Andi Wijaya</h4>
+                <p>Mahasiswa TI Angkatan 2023</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonial-card">
+            <p>"Kunjungan ke BukaTech membuka mata saya tentang peluang karir di startup. Sekarang saya lebih termotivasi untuk mengembangkan proyek-proyek inovatif."</p>
+            <div class="testimonial-author">
+              <img src="https://source.unsplash.com/100x100/?female,student" alt="Dewi Lestari">
+              <div>
+                <h4>Dewi Lestari</h4>
+                <p>Mahasiswa TI Angkatan 2022</p>
+              </div>
+            </div>
+          </div>
+          
+          <h2>Pencapaian dan Hasil</h2>
+          <p>HIMTI GOING 2025 berhasil mencapai berbagai tujuan:</p>
+          <ul>
+            <li>40 mahasiswa mendapatkan pengalaman industri langsung</li>
+            <li>3 MoU kerjasama untuk magang dan penelitian</li>
+            <li>15 mahasiswa mendapatkan tawaran magang</li>
+            <li>Peningkatan minat mahasiswa pada proyek-proyek inovatif</li>
+          </ul>
+          
+          <div class="highlight-box">
+            <h3>Info HIMTI GOING 2026</h3>
+            <p>Untuk tahun depan, HIMTI berencana memperluas jangkauan kunjungan ke perusahaan teknologi di Singapura dan Malaysia. Pendaftaran akan dibuka Maret 2026.</p>
+            <p><strong>Follow sosial media HIMTI</strong> untuk informasi terbaru tentang program ini dan kegiatan bermanfaat lainnya!</p>
+          </div>
+        </div>
+
+        <div class="article-tags">
+          <span>Tags:</span>
+          <a href="#">HIMTI</a>
+          <a href="#">Kunjungan Industri</a>
+          <a href="#">Teknologi</a>
+          <a href="#">Mahasiswa</a>
+        </div>
+
+        <div class="article-share">
+          <span>Bagikan:</span>
+          <a href="#" class="share-button">Facebook</a>
+          <a href="#" class="share-button">Twitter</a>
+          <a href="#" class="share-button">LinkedIn</a>
+        </div>
+
+        <div class="related-articles">
+          <h3>Artikel Terkait</h3>
+          <div class="related-articles-grid">
+            <div class="related-article-card">
+              <img src="https://source.unsplash.com/250x150/?tech,competition" alt="Tech Competition">
+              <div>
+                <h4><a href="#">HIMTI Juara 1 Kompetisi IT Nasional 2025</a></h4>
+                <p class="related-article-meta">Mei 2025 • 5 menit baca</p>
+              </div>
+            </div>
+            <div class="related-article-card">
+              <img src="https://source.unsplash.com/250x150/?coding,workshop" alt="Coding Workshop">
+              <div>
+                <h4><a href="#">Workshop Pemrograman Python HIMTI Dapat Antusiasme Tinggi</a></h4>
+                <p class="related-article-meta">April 2025 • 4 menit baca</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h2>HIMTI Store</h2>
+          <p>Belanja & Berkarya Bersama HIMTI</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column">
+            <h3>Navigasi</h3>
+            <ul>
+              <li><a href="../index.html">Beranda</a></li>
+              <li><a href="index.html">Artikel</a></li>
+              <li><a href="../products/index.html">Produk</a></li>
+              <li><a href="../products/cart.html">Keranjang</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Tentang</h3>
+            <ul>
+              <li><a href="#">Tentang HIMTI</a></li>
+              <li><a href="#">Kegiatan</a></li>
+              <li><a href="#">Kontak</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Hubungi Kami</h3>
+            <ul>
+              <li>Email: himti@universitas.ac.id</li>
+              <li>Line: @himti_official</li>
+              <li>IG: @himti_universitas</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Himpunan Mahasiswa Teknik Informatika. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+a<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Artikel - Admin Himti Store</title>
+    <link rel="stylesheet" href="../css/amin/admin-dashboard.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Admin Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <h2>Himti Store</h2>
+                <p>Admin Panel</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-item"><span class="nav-icon">📊</span><span class="nav-label">Dashboard</span></a></li>
+                    <li><a href="articles.html" class="nav-item active"><span class="nav-icon">📝</span><span class="nav-label">Artikel</span></a></li>
+                    <li><a href="products.html" class="nav-item"><span class="nav-icon">📦</span><span class="nav-label">Produk</span></a></li>
+                    <li><a href="users.html" class="nav-item"><span class="nav-icon">👥</span><span class="nav-label">Pengguna</span></a></li>
+                    <li><a href="transaction.html" class="nav-item"><span class="nav-icon">💰</span><span class="nav-label">Transaksi</span></a></li>
+                    <li><a href="../index.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-label">Lihat Website</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Admin Content -->
+        <main class="admin-content">
+            <header class="admin-header">
+                <div class="header-search">
+                    <input type="text" placeholder="Cari...">
+                    <button type="submit">🔍</button>
+                </div>
+                <div class="header-actions">
+                    <div class="notifications">
+                        <button class="notification-btn">🔔</button>
+                        <span class="notification-badge">3</span>
+                    </div>
+                    <div class="admin-profile">
+                        <img src="../images/avatar.png" alt="Admin Avatar">
+                        <span>Admin</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="admin-page-content">
+                <div class="page-header">
+                    <h1>Kelola Artikel</h1>
+                    <button class="btn btn-primary add-new-btn">+ Tambah Artikel Baru</button>
+                </div>
+                
+                <!-- Article Filters -->
+                <div class="content-filters">
+                    <div class="filter-group">
+                        <label for="status-filter">Status:</label>
+                        <select id="status-filter">
+                            <option value="all">Semua Status</option>
+                            <option value="published">Dipublikasikan</option>
+                            <option value="draft">Draft</option>
+                            <option value="archived">Diarsipkan</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="category-filter">Kategori:</label>
+                        <select id="category-filter">
+                            <option value="all">Semua Kategori</option>
+                            <option value="teknologi">Teknologi</option>
+                            <option value="gaya-hidup">Gaya Hidup</option>
+                            <option value="kesehatan">Kesehatan</option>
+                            <option value="bisnis">Bisnis</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group search">
+                        <input type="text" placeholder="Cari artikel...">
+                        <button type="submit">Cari</button>
+                    </div>
+                </div>
+                
+                <!-- Articles Table -->
+                <div class="data-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" id="select-all">
+                                </th>
+                                <th>Judul</th>
+                                <th>Kategori</th>
+                                <th>Penulis</th>
+                                <th>Tanggal</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Article 1 -->
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="row-checkbox">
+                                </td>
+                                <td>
+                                    <div class="item-info">
+                                        <img src="../image/ai.jpeg" alt="Article Thumbnail">
+                                        <div>
+                                            <div class="item-title">Perkembangan Teknologi AI di Tahun 2025</div>
+                                            <div class="item-meta">ID: ART-001</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Teknologi</td>
+                                <td>John Doe</td>
+                                <td>12 Mei 2025</td>
+                                <td><span class="status-badge published">Dipublikasikan</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit">✏️</button>
+                                        <button class="action-btn view">👁️</button>
+                                        <button class="action-btn delete">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                            <!-- Article 2 -->
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="row-checkbox">
+                                </td>
+                                <td>
+                                    <div class="item-info">
+                                        <img src="../image/f1.jpeg" alt="Article Thumbnail">
+                                        <div>
+                                            <div class="item-title">Daya Tarik Fomula 1</div>
+                                            <div class="item-meta">ID: ART-002</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Gaya Hidup</td>
+                                <td>Jane Smith</td>
+                                <td>10 Mei 2025</td>
+                                <td><span class="status-badge published">Dipublikasikan</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit">✏️</button>
+                                        <button class="action-btn view">👁️</button>
+                                        <button class="action-btn delete">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                            <!-- Article 3 -->
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="row-checkbox">
+                                </td>
+                                <td>
+                                    <div class="item-info">
+                                        <img src="../image/foldable.jpeg" alt="Article Thumbnail">
+                                        <div>
+                                            <div class="item-title">Revolusi Handphone lipat</div>
+                                            <div class="item-meta">ID: ART-003</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Kesehatan</td>
+                                <td>David Johnson</td>
+                                <td>8 Mei 2025</td>
+                                <td><span class="status-badge published">Dipublikasikan</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit">✏️</button>
+                                        <button class="action-btn view">👁️</button>
+                                        <button class="action-btn delete">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                            <!-- Article 4 -->
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="row-checkbox">
+                                </td>
+                                <td>
+                                    <div class="item-info">
+                                        <img src="../image/Laptop.jpeg" alt="Article Thumbnail">
+                                        <div>
+                                            <div class="item-title">Top 10 Rekomendasi Laptop Untuk Mahasiswa Informatika</div>
+                                            <div class="item-meta">ID: ART-004</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Bisnis</td>
+                                <td>Sarah Williams</td>
+                                <td>5 Mei 2025</td>
+                                <td><span class="status-badge draft">Draft</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit">✏️</button>
+                                        <button class="action-btn view">👁️</button>
+                                        <button class="action-btn delete">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                            <!-- Article 5 -->
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="row-checkbox">
+                                </td>
+                                <td>
+                                    <div class="item-info">
+                                        <img src="../image/rajaampat.jpeg" alt="Article Thumbnail">
+                                        <div>
+                                            <div class="item-title">Destinasi Wisat Terbaik di Indonesia</div>
+                                            <div class="item-meta">ID: ART-005</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Teknologi</td>
+                                <td>Michael Brown</td>
+                                <td>3 Mei 2025</td>
+                                <td><span class="status-badge archived">Diarsipkan</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit">✏️</button>
+                                        <button class="action-btn view">👁️</button>
+                                        <button class="action-btn delete">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="pagination">
+                    <a href="#" class="active">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#" class="next">Selanjutnya &raquo;</a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Select all checkbox
+            const selectAllCheckbox = document.getElementById('select-all');
+            const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+            
+            selectAllCheckbox.addEventListener('change', function() {
+                rowCheckboxes.forEach(checkbox => {
+                    checkbox.checked = this.checked;
+                });
+            });
+            
+            // Filter functionality
+            const statusFilter = document.getElementById('status-filter');
+            const categoryFilter = document.getElementById('category-filter');
+            const searchInput = document.querySelector('.filter-group.search input');
+            const searchButton = document.querySelector('.filter-group.search button');
+            
+            // Add event listeners for filters
+            statusFilter.addEventListener('change', function() {
+                console.log('Status filter changed:', this.value);
+            });
+            
+            categoryFilter.addEventListener('change', function() {
+                console.log('Category filter changed:', this.value);
+            });
+            
+            searchButton.addEventListener('click', function() {
+                console.log('Search button clicked:', searchInput.value);
+            });
+            
+            // Action buttons
+            const editButtons = document.querySelectorAll('.action-btn.edit');
+            const viewButtons = document.querySelectorAll('.action-btn.view');
+            const deleteButtons = document.querySelectorAll('.action-btn.delete');
+            
+            editButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const row = this.closest('tr');
+                    const title = row.querySelector('.item-title').textContent;
+                    alert(`Edit article: ${title}`);
+                });
+            });
+            
+            viewButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const row = this.closest('tr');
+                    const title = row.querySelector('.item-title').textContent;
+                    alert(`View article: ${title}`);
+                });
+            });
+            
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const row = this.closest('tr');
+                    const title = row.querySelector('.item-title').textContent;
+                    if (confirm(`Are you sure you want to delete article: ${title}?`)) {
+                        row.remove();
+                    }
+                });
+            });
+            
+            // Add new article button
+            const addNewButton = document.querySelector('.add-new-btn');
+            
+            addNewButton.addEventListener('click', function() {
+                alert('Add new article form would open here');
+            });
+        });
+    </script>
+</body>
+</html>
