@@ -869,11 +869,18 @@
     });
     
     // Form submission
+       // Form submission
     document.getElementById('checkoutForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Show success modal
-      document.getElementById('successModal').style.display = 'flex';
+        e.preventDefault();
+        
+        // Simpan data nama ke localStorage
+        const firstName = document.getElementById('firstName').value;
+        const lastName = document.getElementById('lastName').value;
+        localStorage.setItem('userFirstName', firstName);
+        localStorage.setItem('userLastName', lastName);
+        
+        // Show success modal
+        document.getElementById('successModal').style.display = 'flex';
     });
     
     // View history button

@@ -53,10 +53,12 @@ function updateCartCount() {
 // Render Products (for index.html)
 // ----------------------------
 function renderProducts() {
+  // DATA PRODUK DISESUAIKAN DENGAN KONTEN ASLI ANDA
   const products = [
-    { id: 1, name: 'Kaos HITAM HIMTI', price: 50000, image: 'img/kaos.jpg' },
-    { id: 2, name: 'Topi HIMTI', price: 30000, image: 'img/topi.jpg' },
-    { id: 3, name: 'Stiker HIMTI', price: 10000, image: 'img/stiker.jpg' }
+    { id: 'P001', name: 'PDH Himti', price: 150000, image: 'image/Produk.jpg' },
+    { id: 'P002', name: 'Kipas Custom', price: 10000, image: 'image/produk_kipas.jpg' },
+    { id: 'P003', name: 'Totebag Custom', price: 175000, image: 'image/w2e.jpg' },
+    { id: 'P004', name: 'Gantungan Kunci Kustom', price: 225000, image: 'image/produk_ganci.jpeg' }
   ];
 
   const container = document.getElementById('product-list');
@@ -69,10 +71,14 @@ function renderProducts() {
     card.className = 'product-card';
 
     card.innerHTML = `
-      <img src="${product.image}" alt="${product.name}">
-      <h3>${product.name}</h3>
-      <p>Rp ${product.price.toLocaleString()}</p>
-      <button class="add-to-cart-btn">Tambah ke Keranjang</button>
+      <div class="product-image">
+        <img src="${product.image}" alt="${product.name}">
+      </div>
+      <div class="product-info">
+        <h3>${product.name}</h3>
+        <p class="price">Rp ${product.price.toLocaleString('id-ID')}</p>
+        <button class="add-to-cart-btn">Tambah ke Keranjang</button>
+      </div>
     `;
 
     card.querySelector('.add-to-cart-btn').addEventListener('click', () => {
@@ -110,16 +116,16 @@ function renderCartItems() {
 
     row.innerHTML = `
       <td>${item.name}</td>
-      <td>Rp ${item.price.toLocaleString()}</td>
+      <td>Rp ${item.price.toLocaleString('id-ID')}</td>
       <td>${item.quantity}</td>
-      <td>Rp ${itemTotal.toLocaleString()}</td>
+      <td>Rp ${itemTotal.toLocaleString('id-ID')}</td>
       <td><button class="delete-btn" data-index="${index}">Hapus</button></td>
     `;
 
     tableBody.appendChild(row);
   });
 
-  totalDiv.innerHTML = `<h3>Total Keseluruhan: Rp ${grandTotal.toLocaleString()}</h3>`;
+  totalDiv.innerHTML = `<h3>Total Keseluruhan: Rp ${grandTotal.toLocaleString('id-ID')}</h3>`;
 
   document.querySelectorAll('.delete-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -143,3 +149,24 @@ function renderCartItems() {
   }
 }
 
+
+// ----------------------------
+// Initializer (BLOK BARU UNTUK MENJALANKAN SEMUANYA)
+// ----------------------------
+document.addEventListener('DOMContentLoaded', () => {
+  // Panggil fungsi ini di setiap halaman untuk memastikan jumlah keranjang selalu update
+  updateCartCount();
+
+  // Cek path halaman saat ini untuk memanggil fungsi yang relevan
+  const currentPage = window.location.pathname;
+
+  // Kondisi ini akan cocok untuk halaman root (seperti http://127.0.0.1:5500/) 
+  // atau yang secara eksplisit memanggil index.html
+  if (currentPage.endsWith('index.html') || currentPage.endsWith('/')) {
+    renderProducts();
+  }
+
+  if (currentPage.includes('cart.html')) {
+    renderCartItems();
+  }
+});

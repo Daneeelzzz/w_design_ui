@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+
   <header>
     <div class="container">
       <div class="logo">
@@ -19,25 +20,15 @@
         </a>
       </div>
       <nav>
-        <div class="mobile-menu-toggle">
-          <i class="fas fa-bars"></i>
-        </div>
-        <ul class="nav-links">
+        <ul>
           <li><a href="../index.html">Beranda</a></li>
           <li><a href="../articles/index.html">Artikel</a></li>
           <li><a href="index.html" class="active">Produk</a></li>
-          <li class="nav-icons">
-            <a href="cart.html" class="cart-icon">
-              <i class="fas fa-shopping-cart"></i>
-              <span class="cart-count">0</span>
-            </a>
-          </li>
-          <li class="nav-icons">
-            <a href="../account/login.html" class="login-btn">Masuk</a>
-          </li>
-          <li class="nav-icons">
-            <a href="account/profile.html" class="profile-icon" title="Profil Anda">
-              <i class="fas fa-user-circle"></i>
+          <li><a href="cart.html" class="cart-icon">Keranjang <span class="cart-count">0</span></a></li>
+          <li><a href="../account/login.html">Masuk</a></li>
+          <li>
+            <a href="../account/profile.html" class="profile-icon" title="Profil Anda" aria-label="Profil">
+               <i class="fas fa-user-circle" style="font-size: 22px; vertical-align: middle;"></i>
             </a>
           </li>
         </ul>
@@ -46,7 +37,6 @@
   </header>
 
   <main>
-    <!-- Product Catalog Header with Search -->
     <section class="product-header">
       <div class="container">
         <div class="header-content">
@@ -75,11 +65,9 @@
       </div>
     </section>
 
-    <!-- Product Grid -->
     <section class="product-grid-section">
       <div class="container">
         <div class="product-grid" id="productGrid">
-          <!-- Product 1 - Ganci -->
           <div class="product-card" data-name="Ipomg 99" data-category="aksesoris">
             <div class="product-badge">Terbaru</div>
             <div class="product-image">
@@ -110,7 +98,6 @@
             </div>
           </div>
 
-          <!-- Product 2 - Totebag -->
           <div class="product-card" data-name="Totebag HIMTI" data-category="fashion">
             <div class="product-badge sale">Diskon 30%</div>
             <div class="product-image">
@@ -141,7 +128,6 @@
           </div>
         </div>
 
-        <!-- Pagination -->
         <div class="pagination">
           <a href="#" class="page-nav"><i class="fas fa-chevron-left"></i></a>
           <a href="#" class="active">1</a>
@@ -149,7 +135,7 @@
           <a href="#">3</a>
           <a href="#">4</a>
           <a href="#">5</a>
-          <a href="#" class="page-nav"><i class="fas fa-chevron-right"></i></a>
+          <a href="../products/index copy.html" class="page-nav"><i class="fas fa-chevron-right"></i></a>
         </div>
       </div>
     </section>
@@ -220,6 +206,8 @@
     </div>
   </footer>
 
+</body>
+</html>
   <script>
     // Mobile menu toggle
     document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
