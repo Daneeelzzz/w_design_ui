@@ -9,21 +9,61 @@
   <link rel="stylesheet" href="../css/footer.css" />
   <link rel="stylesheet" href="../css/articles.css" />
   <style>
-    /* Tambahan style untuk gambar */
+    /* Improved image styling */
     .article-content img {
-      max-width: 100%;
+      width: 100%;
       height: auto;
+      max-width: 800px;
       display: block;
-      margin: 20px 0;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin: 20px auto;
+      border-radius: 10px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    
+
+    .article-content img:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
     .article-featured-image img {
       width: 100%;
       max-height: 500px;
       object-fit: cover;
-      border-radius: 8px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Image caption styling */
+    .image-caption {
+      text-align: center;
+      font-style: italic;
+      color: #666;
+      font-size: 0.9rem;
+      margin-top: -10px;
+      margin-bottom: 25px;
+    }
+
+    /* Better spacing for content */
+    .article-content h2 {
+      margin-top: 35px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #f0f0f0;
+    }
+
+    .article-content ul {
+      background: #f9f9f9;
+      padding: 20px 30px;
+      border-radius: 10px;
+      border-left: 4px solid #3498db;
+    }
+
+    blockquote {
+      border-left: 5px solid #3498db;
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 30px 0;
     }
   </style>
 </head>
@@ -56,7 +96,7 @@
           </div>
           <h1>Top 10 Rekomendasi Laptop untuk Mahasiswa Informatika 2025</h1>
           <div class="article-author">
-            <img src="https://source.unsplash.com/random/50x50/?portrait" alt="Author" />
+            <img src="https://source.unsplash.com/random/50x50/?portrait,man,student" alt="Author" />
             <div class="author-info">
               <span class="author-name">Daniel Fernando</span>
               <span class="author-title">Mahasiswa TI</span>
@@ -65,14 +105,16 @@
         </div>
 
         <div class="article-featured-image">
-          <img src="https://source.unsplash.com/1600x900/?laptop,technology" alt="Laptop Informatika 2025" />
+          <img src="https://source.unsplash.com/1600x900/?laptop,technology,student,2025" alt="Laptop Informatika 2025" />
+          <p class="image-caption">Laptop modern untuk kebutuhan perkuliahan informatika (Sumber: Unsplash)</p>
         </div>
 
         <div class="article-content">
           <p>Memilih laptop yang tepat sangat penting bagi mahasiswa jurusan Informatika. Di tahun 2025, spesifikasi semakin canggih, dan kebutuhan seperti coding, desain UI/UX, virtualisasi, hingga machine learning makin meningkat. Berikut 10 laptop terbaik yang cocok untuk kamu!</p>
 
           <h2>1. MacBook Air M3</h2>
-          <img src="https://source.unsplash.com/800x450/?macbook,apple" alt="MacBook Air M3">
+          <img src="https://source.unsplash.com/800x450/?macbook,apple,m3,thin" alt="MacBook Air M3">
+          <p class="image-caption">MacBook Air M3 - Desain tipis dan ringan dengan performa tinggi</p>
           <ul>
             <li>Chip Apple M3 dengan performa efisien</li>
             <li>RAM 8–16 GB, SSD 256 GB–1 TB</li>
@@ -81,7 +123,8 @@
           </ul>
 
           <h2>2. ASUS ROG Flow X13 (2025)</h2>
-          <img src="https://source.unsplash.com/800x450/?asus,rog,gaming" alt="ASUS ROG Flow X13">
+          <img src="https://source.unsplash.com/800x450/?asus,rog,gaming,laptop,2025" alt="ASUS ROG Flow X13">
+          <p class="image-caption">ASUS ROG Flow X13 - Performa tinggi dalam bentuk ultraportable</p>
           <ul>
             <li>AMD Ryzen 9, NVIDIA RTX 4050</li>
             <li>Layar 13.4″ touchscreen 120Hz</li>
@@ -90,7 +133,8 @@
           </ul>
 
           <h2>3. Dell XPS 13 Plus</h2>
-          <img src="https://source.unsplash.com/800x450/?dell,xps,laptop" alt="Dell XPS 13 Plus">
+          <img src="https://source.unsplash.com/800x450/?dell,xps,ultrabook,infinityedge" alt="Dell XPS 13 Plus">
+          <p class="image-caption">Dell XPS 13 Plus - Desain premium dengan layar InfinityEdge</p>
           <ul>
             <li>Intel Core Ultra 7, RAM 16 GB, SSD 512 GB</li>
             <li>Layar OLED 13.4″, bodi premium</li>
@@ -98,7 +142,8 @@
           </ul>
 
           <h2>4. Lenovo ThinkPad X1 Carbon Gen 12</h2>
-          <img src="https://source.unsplash.com/800x450/?lenovo,thinkpad,black" alt="ThinkPad X1 Carbon">
+          <img src="https://source.unsplash.com/800x450/?thinkpad,black,laptop,business" alt="ThinkPad X1 Carbon">
+          <p class="image-caption">ThinkPad X1 Carbon - Keyboard legendaris dan ketahanan militer</p>
           <ul>
             <li>Intel Core i7 Gen 14, RAM 16 GB</li>
             <li>Bodi kuat & ringan, keyboard legendaris</li>
@@ -106,7 +151,8 @@
           </ul>
 
           <h2>5. Acer Swift X 14 (2025)</h2>
-          <img src="https://source.unsplash.com/800x450/?acer,swift,laptop" alt="Acer Swift X 14">
+          <img src="https://source.unsplash.com/800x450/?acer,swift,laptop,oled" alt="Acer Swift X 14">
+          <p class="image-caption">Acer Swift X 14 - Performa tinggi dengan layar OLED</p>
           <ul>
             <li>Intel Core i7-13700H / AMD Ryzen 7 8845HS</li>
             <li>NVIDIA RTX 4050, RAM 16–32 GB, SSD 1 TB</li>
@@ -114,7 +160,8 @@
           </ul>
 
           <h2>6. HP Envy x360</h2>
-          <img src="https://source.unsplash.com/800x450/?hp,envy,convertible" alt="HP Envy x360">
+          <img src="https://source.unsplash.com/800x450/?hp,envy,convertible,touchscreen" alt="HP Envy x360">
+          <p class="image-caption">HP Envy x360 - Fleksibilitas 2-in-1 dengan layar sentuh</p>
           <ul>
             <li>Ryzen 7 8840HS / Intel Core Ultra 7</li>
             <li>2-in-1 touchscreen + stylus</li>
@@ -122,7 +169,8 @@
           </ul>
 
           <h2>7. Microsoft Surface Laptop 6</h2>
-          <img src="https://source.unsplash.com/800x450/?microsoft,surface,pro" alt="Surface Laptop 6">
+          <img src="https://source.unsplash.com/800x450/?microsoft,surface,laptop,2025" alt="Surface Laptop 6">
+          <p class="image-caption">Surface Laptop 6 - Desain elegan dengan dukungan AI</p>
           <ul>
             <li>Intel Core Ultra 7, RAM hingga 32 GB</li>
             <li>Layar 13.5/15 inci PixelSense</li>
@@ -130,7 +178,8 @@
           </ul>
 
           <h2>8. ASUS Zenbook 14 OLED</h2>
-          <img src="https://source.unsplash.com/800x450/?asus,zenbook,ultrabook" alt="Zenbook 14 OLED">
+          <img src="https://source.unsplash.com/800x450/?asus,zenbook,ultrabook,oled" alt="Zenbook 14 OLED">
+          <p class="image-caption">ASUS Zenbook 14 OLED - Layar OLED dalam bodi ultraportable</p>
           <ul>
             <li>Intel Core Ultra / Ryzen 7</li>
             <li>RAM 16 GB, SSD 512 GB–1 TB</li>
@@ -138,7 +187,8 @@
           </ul>
 
           <h2>9. MSI Modern 14/16</h2>
-          <img src="https://source.unsplash.com/800x450/?msi,laptop,modern" alt="MSI Modern 14">
+          <img src="https://source.unsplash.com/800x450/?msi,laptop,modern,thin" alt="MSI Modern 14">
+          <p class="image-caption">MSI Modern 14 - Minimalis dengan harga terjangkau</p>
           <ul>
             <li>Intel Core i7 Gen 13/14</li>
             <li>RAM 16 GB, SSD 512 GB</li>
@@ -146,7 +196,8 @@
           </ul>
 
           <h2>10. Lenovo IdeaPad Slim 5 Pro</h2>
-          <img src="https://source.unsplash.com/800x450/?lenovo,ideapad,laptop" alt="IdeaPad Slim 5 Pro">
+          <img src="https://source.unsplash.com/800x450/?lenovo,ideapad,slim,laptop" alt="IdeaPad Slim 5 Pro">
+          <p class="image-caption">IdeaPad Slim 5 Pro - Value tinggi dengan layar rasio 16:10</p>
           <ul>
             <li>Ryzen 7 8845HS, RAM 16 GB, SSD 512 GB</li>
             <li>Layar 14″ 2.2K IPS, rasio 16:10</li>
@@ -154,6 +205,8 @@
           </ul>
 
           <h2>Panduan Memilih Laptop TI</h2>
+          <img src="https://source.unsplash.com/800x450/?laptop,specs,components,motherboard" alt="Spesifikasi Laptop">
+          <p class="image-caption">Pertimbangkan spesifikasi utama untuk kebutuhan informatika</p>
           <ul>
             <li><strong>Prosesor:</strong> Minimal Intel i5 / Ryzen 5</li>
             <li><strong>RAM:</strong> 8GB (16GB disarankan)</li>
@@ -165,6 +218,8 @@
           <blockquote>"Laptop yang tepat bisa meningkatkan produktivitas dan pengalaman belajar kamu secara signifikan."</blockquote>
 
           <h2>Kesimpulan</h2>
+          <img src="https://source.unsplash.com/800x450/?student,laptop,coding,university" alt="Mahasiswa menggunakan laptop">
+          <p class="image-caption">Mahasiswa informatika membutuhkan laptop yang handal untuk berbagai tugas</p>
           <p>Pilih laptop yang sesuai kebutuhan, bukan sekadar merek. Perhatikan juga aftersales dan keawetan perangkat. Laptop yang baik akan jadi temanmu ngoding, riset, dan menyelesaikan skripsi dengan lebih lancar.</p>
         </div>
       </div>

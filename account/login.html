@@ -24,8 +24,9 @@
   <div class="login-container">
     <h1>Masuk</h1>
     <form id="loginForm">
-      <input type="email" placeholder="Email" required/>
-      <input type="password" placeholder="Kata Sandi" required/>
+      <!-- Menambahkan ID agar bisa dibaca oleh JavaScript -->
+      <input type="email" id="email" placeholder="Email" required/>
+      <input type="password" id="password" placeholder="Kata Sandi" required/>
       <button type="submit">Masuk</button>
     </form>
     <p>Belum punya akun? <a href="register.html">Daftar</a></p>
@@ -37,10 +38,32 @@
   </div>
 
   <script>
+    // Memodifikasi skrip login
     document.getElementById("loginForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      alert("Login berhasil!");
-      window.location.href = "../index.html";
+      // Mencegah form untuk refresh halaman
+      e.preventDefault(); 
+
+      // 1. Ambil nilai dari input form
+      const userEmail = document.getElementById('email').value;
+      
+      // Untuk demo, kita akan menggunakan nama statis.
+      // Jika ini halaman register, Anda bisa menambahkan input untuk nama.
+      const userName = 'Daniel Situmorang'; 
+      
+      // 2. Buat objek data pengguna
+      const userData = {
+          name: userName,
+          email: userEmail
+      };
+      
+      // 3. Simpan data pengguna ke localStorage browser
+      // Data ini akan tetap tersimpan bahkan setelah browser ditutup
+      localStorage.setItem('loggedInUser', JSON.stringify(userData));
+
+      // 4. Beri notifikasi dan arahkan ke halaman profil
+      alert("Login berhasil! Anda akan diarahkan ke halaman profil.");
+      // Pastikan path ke profile.html sudah benar
+      window.location.href = "profile.html"; 
     });
   </script>
 </body>

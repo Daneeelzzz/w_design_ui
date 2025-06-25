@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Saya - HIMTI Store</title>
+    <!-- Menyesuaikan dengan struktur CSS baru -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <style>
+        /* CSS Khusus untuk Halaman Profil (dipertahankan agar layout tidak rusak) */
+        .profile-container { display: flex; max-width: 1200px; margin: 40px auto; gap: 30px; padding: 0 20px; }
+        .profile-sidebar { flex: 0 0 250px; background-color: #f8f9fa; border-radius: 8px; padding: 20px; height: fit-content; }
+        .profile-sidebar .user-info { text-align: center; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; }
+        .profile-sidebar .user-info img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 10px; }
+        .profile-sidebar .user-info h3 { margin: 0; font-size: 1.2em; color: #212529; }
+        .profile-sidebar .user-info p { margin: 0; font-size: 0.9em; color: #6c757d; }
+        .user-stats { display: flex; justify-content: space-around; text-align: center; padding: 10px 0; margin-bottom: 20px; border-bottom: 1px solid #e2e8f0; }
+        .user-stats .stat-item span { display: block; font-size: 1.5em; font-weight: 700; color: #ff6b00; }
+        .user-stats .stat-item p { margin: 4px 0 0 0; font-size: 0.8em; color: #6c757d; }
+        .profile-nav ul { list-style: none; padding: 0; margin: 0; }
+        .profile-nav li a { display: block; padding: 12px 15px; text-decoration: none; color: #212529; border-radius: 6px; margin-bottom: 5px; font-weight: 500; }
+        .profile-nav li a:hover, .profile-nav li a.active { background-color: #ff6b00; color: white; }
+        .profile-nav li a.logout { color: #dc3545; }
+        .profile-nav li a.logout:hover { background-color: #dc3545; color: white; }
+        .profile-content { flex-grow: 1; background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .profile-content h2 { font-size: 1.8em; margin-top: 0; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #e2e8f0; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 500; color: #495057; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; font-size: 1em; font-family: inherit; }
+        .form-group textarea { resize: vertical; }
+        .profile-btn { background-color: #2979FF; color: white; padding: 12px 25px; border: none; border-radius: 6px; cursor: pointer; font-size: 1em; font-weight: 500; }
+        .profile-btn:hover { opacity: 0.9; }
+        @media (max-width: 768px) { .profile-container { flex-direction: column; } .profile-sidebar { flex: 0 0 auto; width: 100%; } }
+    </style>
+</head>
+<body>
+
+    <!-- Header Baru Sesuai Permintaan -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Arek HIMTI</h1>
+            </div> 
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Beranda</a></li>
+                    <li><a href="../articles/index.html">Artikel</a></li>
+                    <li><a href="../products/index.html">Produk</a></li>
+                    <li><a href="../products/cart.html" class="cart-icon">Keranjang <span class="cart-count">0</span></a></li>
+                    <li><a href="login.html">Masuk</a></li>
+                    <li> <a href="profile.html" class="profile-icon active" title="Profil Anda" aria-label="Profil">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#FF6B00" viewBox="0 0 24 24">
+                                <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+                            </svg>
+                         </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="profile-container">
+            <!-- Sidebar Navigasi Profil -->
+            <aside class="profile-sidebar">
+                <div class="user-info">
+                    <img src="https://placehold.co/100x100/e2e8f0/4a5568?text=User" alt="Foto Profil">
+                    <h3 id="profile-name">Nama Pengguna</h3>
+                    <p id="profile-email">email@pengguna.com</p>
+                </div>
+                <div class="user-stats">
+                    <div class="stat-item">
+                        <span>12</span>
+                        <p>Artikel Dibaca</p>
+                    </div>
+                    <div class="stat-item">
+                        <span>5</span>
+                        <p>Total Belanja</p>
+                    </div>
+                </div>
+                <nav class="profile-nav">
+                    <ul>
+                        <li><a href="#" class="active">Profil Saya</a></li>
+                        <li><a href="../products/cart.html">Pesanan Saya</a></li>
+                        <li><a href="#" id="logout-link" class="logout">Keluar</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Konten Utama Profil -->
+            <section class="profile-content">
+                <h2>Profil Saya</h2>
+                <p>Kelola informasi profil dan alamat Anda untuk mengontrol, melindungi, dan mengamankan akun.</p>
+                
+                <form>
+                    <div class="form-group">
+                        <label for="fullName">Nama Lengkap</label>
+                        <input type="text" id="fullName" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Alamat Email</label>
+                        <input type="email" id="email" value="" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Nomor Telepon</label>
+                        <input type="tel" id="phone" value="081234567890">
+                    </div>
+                     <div class="form-group">
+                        <label for="address">Alamat Pengiriman Utama</label>
+                        <textarea id="address" rows="4">Jl. Contoh No. 123, Kelurahan Maju, Kecamatan Jaya, Kota Bahagia, 12345</textarea>
+                    </div>
+                    <button type="submit" class="profile-btn">Simpan Perubahan</button>
+                </form>
+
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer Baru Sesuai Permintaan -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>ShopArticle</h2>
+                    <p>Belanja & Baca dalam Satu Platform</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>Navigasi</h3>
+                        <ul>
+                            <li><a href="../index.html">Beranda</a></li>
+                            <li><a href="../articles/index.html">Artikel</a></li>
+                            <li><a href="../products/index.html">Produk</a></li>
+                            <li><a href="../products/cart.html">Keranjang</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Akun</h3>
+                        <ul>
+                            <li><a href="login.html">Masuk</a></li>
+                            <li><a href="#">Daftar</a></li>
+                            <li><a href="#">Riwayat Transaksi</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Hubungi Kami</h3>
+                        <ul>
+                            <li>Email: info@shoparticle.com</li>
+                            <li>Telepon: +62 123 4567 890</li>
+                            <li>Alamat: Jl. Contoh No. 123, Jakarta</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ShopArticle. Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Jalankan skrip ini setelah seluruh konten halaman dimuat
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. Mengambil data pengguna dari localStorage
+            const userDataString = localStorage.getItem('loggedInUser');
+            
+            if (userDataString) {
+                // Jika data ada, ubah kembali menjadi objek
+                const userData = JSON.parse(userDataString);
+                
+                // 2. Menampilkan data ke elemen-elemen di halaman
+                document.getElementById('profile-name').textContent = userData.name;
+                document.getElementById('profile-email').textContent = userData.email;
+                document.getElementById('fullName').value = userData.name;
+                document.getElementById('email').value = userData.email;
+                
+            } else {
+                // Jika tidak ada data pengguna, arahkan kembali ke halaman login
+                alert('Anda harus login terlebih dahulu.');
+                window.location.href = 'login.html'; // Sesuaikan path jika perlu
+            }
+
+            // 3. Menambahkan event listener untuk tombol keluar (logout)
+            document.getElementById('logout-link').addEventListener('click', function(event) {
+                event.preventDefault(); 
+                
+                // Hapus data pengguna dari localStorage
+                localStorage.removeItem('loggedInUser');
+                
+                // Tampilkan alert dan arahkan ke halaman utama
+                alert('Anda telah berhasil keluar.');
+                window.location.href = '../index.html'; // Sesuaikan path jika perlu
+            });
+        });
+    </script>
+
+</body>
+</html>

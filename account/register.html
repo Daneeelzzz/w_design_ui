@@ -10,19 +10,38 @@
   <div class="register-container">
     <h1>Daftar</h1>
     <form id="registerForm">
-      <input type="text" placeholder="Nama Lengkap" required/>
-      <input type="email" placeholder="Email" required/>
-      <input type="password" placeholder="Kata Sandi" required/>
+      <!-- Menambahkan ID pada input agar bisa dibaca oleh JavaScript -->
+      <input type="text" id="name" placeholder="Nama Lengkap" required/>
+      <input type="email" id="email" placeholder="Email" required/>
+      <input type="password" id="password" placeholder="Kata Sandi" required/>
       <button type="submit">Daftar</button>
     </form>
     <p>Sudah punya akun? <a href="login.html">Masuk</a></p>
   </div>
 
   <script>
+    // Memodifikasi skrip register
     document.getElementById("registerForm").addEventListener("submit", function(e) {
+      // Mencegah form untuk refresh halaman
       e.preventDefault();
-      alert("Pendaftaran berhasil! Silakan login.");
-      window.location.href = "login.html";
+
+      // 1. Ambil nilai dari input form
+      const userName = document.getElementById('name').value;
+      const userEmail = document.getElementById('email').value;
+      
+      // 2. Buat objek data pengguna
+      const userData = {
+          name: userName,
+          email: userEmail
+      };
+      
+      // 3. Simpan data pengguna ke localStorage browser
+      // Ini akan "login" pengguna secara otomatis setelah mendaftar
+      localStorage.setItem('loggedInUser', JSON.stringify(userData));
+
+      // 4. Beri notifikasi dan arahkan langsung ke halaman profil
+      alert("Pendaftaran berhasil! Anda akan diarahkan ke halaman profil.");
+      window.location.href = "profile.html"; // Pastikan path ini benar
     });
   </script>
 </body>

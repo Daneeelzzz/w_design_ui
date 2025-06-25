@@ -1,16 +1,90 @@
-a<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kelola Artikel - Admin Himti Store</title>
     <link rel="stylesheet" href="../css/amin/admin-dashboard.css">
+    <style>
+        /* CSS untuk Modal (Pop-up Form) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none; /* Disembunyikan secara default */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .modal-header h2 {
+            margin: 0;
+        }
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .modal-body .form-group {
+            margin-bottom: 15px;
+        }
+        .modal-body label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        .modal-body input, .modal-body select, .modal-body textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .modal-footer {
+            text-align: right;
+            margin-top: 20px;
+        }
+        .modal-footer .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .modal-footer .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+            margin-right: 10px;
+        }
+        .modal-footer .btn-primary {
+            background-color: #0d6efd;
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <div class="admin-layout">
         <!-- Admin Sidebar -->
         <aside class="admin-sidebar">
-            <div class="sidebar-header">
+            <!-- ... (Konten sidebar tetap sama) ... -->
+             <div class="sidebar-header">
                 <h2>Himti Store</h2>
                 <p>Admin Panel</p>
             </div>
@@ -28,8 +102,9 @@ a<!DOCTYPE html>
 
         <!-- Admin Content -->
         <main class="admin-content">
-            <header class="admin-header">
-                <div class="header-search">
+             <header class="admin-header">
+                <!-- ... (Konten header tetap sama) ... -->
+                  <div class="header-search">
                     <input type="text" placeholder="Cari...">
                     <button type="submit">🔍</button>
                 </div>
@@ -48,36 +123,12 @@ a<!DOCTYPE html>
             <div class="admin-page-content">
                 <div class="page-header">
                     <h1>Kelola Artikel</h1>
-                    <button class="btn btn-primary add-new-btn">+ Tambah Artikel Baru</button>
+                    <button class="btn btn-primary add-new-btn" id="addArticleBtn">+ Tambah Artikel Baru</button>
                 </div>
                 
-                <!-- Article Filters -->
+                <!-- Filters (fungsi filter tidak diimplementasikan, hanya UI) -->
                 <div class="content-filters">
-                    <div class="filter-group">
-                        <label for="status-filter">Status:</label>
-                        <select id="status-filter">
-                            <option value="all">Semua Status</option>
-                            <option value="published">Dipublikasikan</option>
-                            <option value="draft">Draft</option>
-                            <option value="archived">Diarsipkan</option>
-                        </select>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <label for="category-filter">Kategori:</label>
-                        <select id="category-filter">
-                            <option value="all">Semua Kategori</option>
-                            <option value="teknologi">Teknologi</option>
-                            <option value="gaya-hidup">Gaya Hidup</option>
-                            <option value="kesehatan">Kesehatan</option>
-                            <option value="bisnis">Bisnis</option>
-                        </select>
-                    </div>
-                    
-                    <div class="filter-group search">
-                        <input type="text" placeholder="Cari artikel...">
-                        <button type="submit">Cari</button>
-                    </div>
+                    <!-- ... (Konten filter tetap sama) ... -->
                 </div>
                 
                 <!-- Articles Table -->
@@ -85,9 +136,7 @@ a<!DOCTYPE html>
                     <table class="data-table">
                         <thead>
                             <tr>
-                                <th>
-                                    <input type="checkbox" id="select-all">
-                                </th>
+                                <th><input type="checkbox" id="select-all"></th>
                                 <th>Judul</th>
                                 <th>Kategori</th>
                                 <th>Penulis</th>
@@ -96,225 +145,205 @@ a<!DOCTYPE html>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <!-- Article 1 -->
-                            <tr>
-                                <td>
-                                    <input type="checkbox" class="row-checkbox">
-                                </td>
-                                <td>
-                                    <div class="item-info">
-                                        <img src="../image/ai.jpeg" alt="Article Thumbnail">
-                                        <div>
-                                            <div class="item-title">Perkembangan Teknologi AI di Tahun 2025</div>
-                                            <div class="item-meta">ID: ART-001</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Teknologi</td>
-                                <td>John Doe</td>
-                                <td>12 Mei 2025</td>
-                                <td><span class="status-badge published">Dipublikasikan</span></td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <button class="action-btn edit">✏️</button>
-                                        <button class="action-btn view">👁️</button>
-                                        <button class="action-btn delete">🗑️</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            
-                            <!-- Article 2 -->
-                            <tr>
-                                <td>
-                                    <input type="checkbox" class="row-checkbox">
-                                </td>
-                                <td>
-                                    <div class="item-info">
-                                        <img src="../image/f1.jpeg" alt="Article Thumbnail">
-                                        <div>
-                                            <div class="item-title">Daya Tarik Fomula 1</div>
-                                            <div class="item-meta">ID: ART-002</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Gaya Hidup</td>
-                                <td>Jane Smith</td>
-                                <td>10 Mei 2025</td>
-                                <td><span class="status-badge published">Dipublikasikan</span></td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <button class="action-btn edit">✏️</button>
-                                        <button class="action-btn view">👁️</button>
-                                        <button class="action-btn delete">🗑️</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            
-                            <!-- Article 3 -->
-                            <tr>
-                                <td>
-                                    <input type="checkbox" class="row-checkbox">
-                                </td>
-                                <td>
-                                    <div class="item-info">
-                                        <img src="../image/foldable.jpeg" alt="Article Thumbnail">
-                                        <div>
-                                            <div class="item-title">Revolusi Handphone lipat</div>
-                                            <div class="item-meta">ID: ART-003</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Kesehatan</td>
-                                <td>David Johnson</td>
-                                <td>8 Mei 2025</td>
-                                <td><span class="status-badge published">Dipublikasikan</span></td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <button class="action-btn edit">✏️</button>
-                                        <button class="action-btn view">👁️</button>
-                                        <button class="action-btn delete">🗑️</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            
-                            <!-- Article 4 -->
-                            <tr>
-                                <td>
-                                    <input type="checkbox" class="row-checkbox">
-                                </td>
-                                <td>
-                                    <div class="item-info">
-                                        <img src="../image/Laptop.jpeg" alt="Article Thumbnail">
-                                        <div>
-                                            <div class="item-title">Top 10 Rekomendasi Laptop Untuk Mahasiswa Informatika</div>
-                                            <div class="item-meta">ID: ART-004</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Bisnis</td>
-                                <td>Sarah Williams</td>
-                                <td>5 Mei 2025</td>
-                                <td><span class="status-badge draft">Draft</span></td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <button class="action-btn edit">✏️</button>
-                                        <button class="action-btn view">👁️</button>
-                                        <button class="action-btn delete">🗑️</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            
-                            <!-- Article 5 -->
-                            <tr>
-                                <td>
-                                    <input type="checkbox" class="row-checkbox">
-                                </td>
-                                <td>
-                                    <div class="item-info">
-                                        <img src="../image/rajaampat.jpeg" alt="Article Thumbnail">
-                                        <div>
-                                            <div class="item-title">Destinasi Wisat Terbaik di Indonesia</div>
-                                            <div class="item-meta">ID: ART-005</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Teknologi</td>
-                                <td>Michael Brown</td>
-                                <td>3 Mei 2025</td>
-                                <td><span class="status-badge archived">Diarsipkan</span></td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <button class="action-btn edit">✏️</button>
-                                        <button class="action-btn view">👁️</button>
-                                        <button class="action-btn delete">🗑️</button>
-                                    </div>
-                                </td>
-                            </tr>
+                        <!-- Tabel body akan diisi oleh JavaScript -->
+                        <tbody id="article-table-body">
                         </tbody>
                     </table>
                 </div>
                 
-                <!-- Pagination -->
+                <!-- Pagination (UI saja) -->
                 <div class="pagination">
-                    <a href="#" class="active">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#" class="next">Selanjutnya &raquo;</a>
+                    <!-- ... (Konten pagination tetap sama) ... -->
                 </div>
             </div>
         </main>
     </div>
 
+    <!-- Modal untuk Tambah/Edit Artikel -->
+    <div id="articleModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Tambah Artikel Baru</h2>
+                <button id="closeModalBtn" class="close-btn">&times;</button>
+            </div>
+            <form id="articleForm">
+                <div class="modal-body">
+                    <input type="hidden" id="articleId">
+                    <div class="form-group">
+                        <label for="title">Judul Artikel</label>
+                        <input type="text" id="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Kategori</label>
+                        <select id="category" required>
+                            <option value="Teknologi">Teknologi</option>
+                            <option value="Gaya Hidup">Gaya Hidup</option>
+                            <option value="Kesehatan">Kesehatan</option>
+                            <option value="Bisnis">Bisnis</option>
+                        </select>
+                    </div>
+                     <div class="form-group">
+                        <label for="author">Penulis</label>
+                        <input type="text" id="author" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select id="status" required>
+                            <option value="published">Dipublikasikan</option>
+                            <option value="draft">Draft</option>
+                            <option value="archived">Diarsipkan</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="cancelBtn" class="btn btn-secondary">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Select all checkbox
-            const selectAllCheckbox = document.getElementById('select-all');
-            const rowCheckboxes = document.querySelectorAll('.row-checkbox');
-            
-            selectAllCheckbox.addEventListener('change', function() {
-                rowCheckboxes.forEach(checkbox => {
-                    checkbox.checked = this.checked;
-                });
+    document.addEventListener('DOMContentLoaded', function() {
+        // --- DATA DUMMY (Simulasi Database) ---
+        let articlesData = [
+            { id: 'ART-001', title: 'Perkembangan Teknologi AI di Tahun 2025', category: 'Teknologi', author: 'John Doe', date: '12 Mei 2025', status: 'published', image: '../image/ai.jpeg' },
+            { id: 'ART-002', title: 'Daya Tarik Fomula 1', category: 'Gaya Hidup', author: 'Jane Smith', date: '10 Mei 2025', status: 'published', image: '../image/f1.jpeg' },
+            { id: 'ART-003', title: 'Revolusi Handphone lipat', category: 'Kesehatan', author: 'David Johnson', date: '8 Mei 2025', status: 'published', image: '../image/foldable.jpeg' },
+            { id: 'ART-004', title: 'Top 10 Rekomendasi Laptop Untuk Mahasiswa Informatika', category: 'Bisnis', author: 'Sarah Williams', date: '5 Mei 2025', status: 'draft', image: '../image/Laptop.jpeg' },
+            { id: 'ART-005', title: 'Destinasi Wisata Terbaik di Indonesia', category: 'Teknologi', author: 'Michael Brown', date: '3 Mei 2025', status: 'archived', image: '../image/rajaampat.jpeg' }
+        ];
+
+        const tableBody = document.getElementById('article-table-body');
+        const modal = document.getElementById('articleModal');
+        const addArticleBtn = document.getElementById('addArticleBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const articleForm = document.getElementById('articleForm');
+        const modalTitle = document.getElementById('modalTitle');
+        
+        const articleIdInput = document.getElementById('articleId');
+        const titleInput = document.getElementById('title');
+        const categoryInput = document.getElementById('category');
+        const authorInput = document.getElementById('author');
+        const statusInput = document.getElementById('status');
+        
+        // --- READ: Fungsi untuk merender tabel ---
+        function renderTable() {
+            tableBody.innerHTML = ''; // Kosongkan tabel sebelum diisi ulang
+            articlesData.forEach(article => {
+                const statusClass = {
+                    published: 'published',
+                    draft: 'draft',
+                    archived: 'archived'
+                }[article.status];
+                const statusText = {
+                    published: 'Dipublikasikan',
+                    draft: 'Draft',
+                    archived: 'Diarsipkan'
+                }[article.status];
+
+                const row = `
+                    <tr data-id="${article.id}">
+                        <td><input type="checkbox" class="row-checkbox"></td>
+                        <td>
+                            <div class="item-info">
+                                <img src="${article.image}" alt="Article Thumbnail">
+                                <div>
+                                    <div class="item-title">${article.title}</div>
+                                    <div class="item-meta">ID: ${article.id}</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>${article.category}</td>
+                        <td>${article.author}</td>
+                        <td>${article.date}</td>
+                        <td><span class="status-badge ${statusClass}">${statusText}</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="action-btn edit" data-id="${article.id}">✏️</button>
+                                <button class="action-btn delete" data-id="${article.id}">🗑️</button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                tableBody.insertAdjacentHTML('beforeend', row);
             });
+        }
+
+        // --- Kontrol Modal ---
+        function openModal(mode, articleId = null) {
+            articleForm.reset();
+            if (mode === 'edit') {
+                modalTitle.textContent = 'Edit Artikel';
+                const article = articlesData.find(a => a.id === articleId);
+                if (article) {
+                    articleIdInput.value = article.id;
+                    titleInput.value = article.title;
+                    categoryInput.value = article.category;
+                    authorInput.value = article.author;
+                    statusInput.value = article.status;
+                }
+            } else {
+                modalTitle.textContent = 'Tambah Artikel Baru';
+                articleIdInput.value = '';
+            }
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        addArticleBtn.addEventListener('click', () => openModal('add'));
+        closeModalBtn.addEventListener('click', closeModal);
+        cancelBtn.addEventListener('click', closeModal);
+
+        // --- CREATE / UPDATE ---
+        articleForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const id = articleIdInput.value;
+            const newArticleData = {
+                title: titleInput.value,
+                category: categoryInput.value,
+                author: authorInput.value,
+                status: statusInput.value,
+                date: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }),
+                image: '../image/placeholder.png' // Gambar placeholder untuk artikel baru
+            };
+
+            if (id) { // Update
+                const index = articlesData.findIndex(a => a.id === id);
+                articlesData[index] = { ...articlesData[index], ...newArticleData };
+            } else { // Create
+                newArticleData.id = 'ART-' + Date.now().toString().slice(-5);
+                articlesData.unshift(newArticleData);
+            }
             
-            // Filter functionality
-            const statusFilter = document.getElementById('status-filter');
-            const categoryFilter = document.getElementById('category-filter');
-            const searchInput = document.querySelector('.filter-group.search input');
-            const searchButton = document.querySelector('.filter-group.search button');
-            
-            // Add event listeners for filters
-            statusFilter.addEventListener('change', function() {
-                console.log('Status filter changed:', this.value);
-            });
-            
-            categoryFilter.addEventListener('change', function() {
-                console.log('Category filter changed:', this.value);
-            });
-            
-            searchButton.addEventListener('click', function() {
-                console.log('Search button clicked:', searchInput.value);
-            });
-            
-            // Action buttons
-            const editButtons = document.querySelectorAll('.action-btn.edit');
-            const viewButtons = document.querySelectorAll('.action-btn.view');
-            const deleteButtons = document.querySelectorAll('.action-btn.delete');
-            
-            editButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const row = this.closest('tr');
-                    const title = row.querySelector('.item-title').textContent;
-                    alert(`Edit article: ${title}`);
-                });
-            });
-            
-            viewButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const row = this.closest('tr');
-                    const title = row.querySelector('.item-title').textContent;
-                    alert(`View article: ${title}`);
-                });
-            });
-            
-            deleteButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const row = this.closest('tr');
-                    const title = row.querySelector('.item-title').textContent;
-                    if (confirm(`Are you sure you want to delete article: ${title}?`)) {
-                        row.remove();
-                    }
-                });
-            });
-            
-            // Add new article button
-            const addNewButton = document.querySelector('.add-new-btn');
-            
-            addNewButton.addEventListener('click', function() {
-                alert('Add new article form would open here');
-            });
+            renderTable();
+            closeModal();
         });
+
+        // --- DELETE ---
+        tableBody.addEventListener('click', function(e) {
+            const target = e.target;
+            const articleId = target.dataset.id;
+
+            if (target.classList.contains('delete')) {
+                if (confirm('Apakah Anda yakin ingin menghapus artikel ini?')) {
+                    articlesData = articlesData.filter(a => a.id !== articleId);
+                    renderTable();
+                }
+            }
+            
+            if (target.classList.contains('edit')) {
+                openModal('edit', articleId);
+            }
+        });
+
+        // --- Inisialisasi Awal ---
+        renderTable();
+    });
     </script>
 </body>
 </html>

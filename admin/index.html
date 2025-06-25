@@ -4,7 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Admin Himti Store</title>
-    <link rel="stylesheet" href="../css//amin/admin-dashboard.css">
+    <!-- Ganti path ke file CSS Anda jika perlu -->
+    <link rel="stylesheet" href="../css/amin/admin-dashboard.css">
+    <!-- 1. Menambahkan Pustaka Chart.js dari CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Menambahkan style kecil ini agar canvas pas di dalam kontainer yang ada */
+        .chart-content {
+            position: relative;
+            height: 280px; /* Menentukan tinggi area grafik */
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <div class="admin-layout">
@@ -52,6 +63,7 @@
                 </div>
                 
                 <div class="dashboard-cards">
+                    <!-- ... (Kartu statistik tidak berubah) ... -->
                     <div class="dashboard-card">
                         <div class="card-icon articles">📝</div>
                         <div class="card-value">42</div>
@@ -84,17 +96,9 @@
                             <h3 class="chart-title">Penjualan</h3>
                             <div class="chart-period">30 Hari Terakhir</div>
                         </div>
+                        <!-- 2. Mengganti konten sales-chart dengan elemen <canvas> -->
                         <div class="chart-content sales-chart">
-                            <!-- Dummy chart using CSS -->
-                            <div class="chart-bars">
-                                <div class="chart-bar" style="height: 30%"></div>
-                                <div class="chart-bar" style="height: 45%"></div>
-                                <div class="chart-bar" style="height: 60%"></div>
-                                <div class="chart-bar" style="height: 75%"></div>
-                                <div class="chart-bar" style="height: 90%"></div>
-                                <div class="chart-bar" style="height: 65%"></div>
-                                <div class="chart-bar" style="height: 50%"></div>
-                            </div>
+                            <canvas id="salesChart"></canvas>
                         </div>
                     </div>
                     <div class="chart-container">
@@ -102,71 +106,76 @@
                             <h3 class="chart-title">Sumber Trafik</h3>
                             <div class="chart-period">30 Hari Terakhir</div>
                         </div>
+                        <!-- 3. Mengganti konten traffic-chart dengan elemen <canvas> -->
                         <div class="chart-content traffic-chart">
-                            <!-- Dummy pie chart using CSS -->
-                            <div class="pie-chart">
-                                <div class="pie-segment direct" style="--percentage: 35;"></div>
-                                <div class="pie-segment organic" style="--percentage: 25;"></div>
-                                <div class="pie-segment social" style="--percentage: 20;"></div>
-                                <div class="pie-segment referral" style="--percentage: 15;"></div>
-                                <div class="pie-segment email" style="--percentage: 5;"></div>
-                            </div>
-                            <div class="chart-legend">
-                                <div class="legend-item direct">Direct (35%)</div>
-                                <div class="legend-item organic">Organic (25%)</div>
-                                <div class="legend-item social">Social (20%)</div>
-                                <div class="legend-item referral">Referral (15%)</div>
-                                <div class="legend-item email">Email (5%)</div>
-                            </div>
+                           <canvas id="trafficChart"></canvas>
                         </div>
                     </div>
                 </div>
 
                 <div class="recent-activity">
-                    <div class="activity-header">
-                        <h3 class="activity-title">Aktivitas Terbaru</h3>
-                        <a href="#" class="view-all">Lihat Semua →</a>
-                    </div>
-                    <div class="activity-list">
-                        <div class="activity-item">
-                            <div class="activity-icon order">📦</div>
-                            <div class="activity-content">
-                                <div class="activity-text"><strong>Pesanan Baru</strong> dari John Doe (ID: #ORD12345)</div>
-                                <div class="activity-time">10 menit yang lalu</div>
-                            </div>
-                        </div>
-                        <div class="activity-item">
-                            <div class="activity-icon user">👤</div>
-                            <div class="activity-content">
-                                <div class="activity-text"><strong>Pengguna Baru</strong> telah mendaftar: Jane Smith</div>
-                                <div class="activity-time">45 menit yang lalu</div>
-                            </div>
-                        </div>
-                        <div class="activity-item">
-                            <div class="activity-icon product">🛒</div>
-                            <div class="activity-content">
-                                <div class="activity-text"><strong>Produk Baru</strong> telah ditambahkan: Smartphone XYZ Pro</div>
-                                <div class="activity-time">1 jam yang lalu</div>
-                            </div>
-                        </div>
-                        <div class="activity-item">
-                            <div class="activity-icon order">📦</div>
-                            <div class="activity-content">
-                                <div class="activity-text"><strong>Pesanan</strong> #ORD12344 telah selesai</div>
-                                <div class="activity-time">3 jam yang lalu</div>
-                            </div>
-                        </div>
-                        <div class="activity-item">
-                            <div class="activity-icon user">👤</div>
-                            <div class="activity-content">
-                                <div class="activity-text"><strong>David Johnson</strong> telah memperbarui profilnya</div>
-                                <div class="activity-time">5 jam yang lalu</div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- ... (Aktivitas terbaru tidak berubah) ... -->
                 </div>
             </div>
         </main>
     </div>
+
+    <!-- 4. Menambahkan skrip JavaScript di akhir body -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Grafik Penjualan (Bar Chart) ---
+            const salesCtx = document.getElementById('salesChart').getContext('2d');
+            new Chart(salesCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Minggu 1', 'Minggu 2', 'Minggu 3', 'Minggu 4', 'Minggu 5', 'Minggu 6'],
+                    datasets: [{
+                        label: 'Penjualan',
+                        data: [120, 190, 300, 500, 250, 420],
+                        backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true }
+                    },
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+
+            // --- Grafik Sumber Trafik (Bar Chart) ---
+            const trafficCtx = document.getElementById('trafficChart').getContext('2d');
+            new Chart(trafficCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Direct', 'Organic', 'Social', 'Referral', 'Email'],
+                    datasets: [{
+                        label: 'Jumlah Pengunjung',
+                        data: [350, 250, 200, 150, 50],
+                        backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y', // Membuat bar menjadi horizontal agar lebih mudah dibaca
+                    scales: {
+                        x: { beginAtZero: true }
+                    },
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>

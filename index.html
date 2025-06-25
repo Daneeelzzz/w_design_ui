@@ -8,6 +8,84 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/home.css">
+    <style>
+        /* CSS Khusus untuk Fitur Radio */
+        .radio-player-section {
+            background-color: #f8f9fa;
+            padding: 60px 0;
+        }
+
+        .radio-player-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .radio-player-info h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.5em;
+            color: #212529;
+        }
+
+        .radio-player-info p {
+            margin: 0;
+            color: #6c757d;
+        }
+
+        .radio-player-controls {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #playPauseBtn {
+            background-color: #ff6b00;
+            border: none;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #progressBar {
+            width: 200px;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        #progressBar::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 18px;
+          height: 18px;
+          background: #ff6b00;
+          cursor: pointer;
+          border-radius: 50%;
+        }
+
+        @media (max-width: 768px) {
+            .radio-player-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+        }
+    </style>
 </head>
 <body> 
     <header>
@@ -20,6 +98,8 @@
                     <li><a href="index.html" class="active">Beranda</a></li>
                     <li><a href="articles/index.html">Artikel</a></li>
                     <li><a href="products/index.html">Produk</a></li>
+                    <!-- Navigasi Game Ditambahkan di Sini -->
+                    <li><a href="GAME.HTML">Game</a></li> 
                     <li><a href="products/cart.html" class="cart-icon">Keranjang <span class="cart-count">0</span></a></li>
                     <li><a href="account/login.html">Masuk</a></li>
                     <li>
@@ -37,7 +117,7 @@
     <main>
         <!-- Hero Section -->
         <section class="hero">
-            <div class="container">
+             <div class="container">
                 <div class="hero-content">
                     <h2>Tempatnya Merch dan Berita Himti</h2>
                     <p>Temukan merchandise berkualitas dan artikel informatif dari Himti 2025.</p>
@@ -203,6 +283,84 @@
         </div>
     </footer>
 
+    <!-- Radio Player Section dipindahkan ke sini, setelah footer -->
+    <section class="radio-player-section">
+        <div class="container">
+            <div class="radio-player-container">
+                <div class="radio-player-info">
+                    <h3>HIMTI Radio</h3>
+                    <p id="now-playing">Tekan play untuk memulai</p>
+                </div>
+                <div class="radio-player-controls">
+                    <button id="playPauseBtn">▶️</button>
+                    <input type="range" id="progressBar" value="0" disabled>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script src="js/main.js"></script>
+    <script>
+        // --- Skrip untuk Radio Player Dummy ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            const nowPlayingEl = document.getElementById('now-playing');
+            const progressBar = document.getElementById('progressBar');
+
+            const playlist = [
+                { title: 'HIMTI Morning Show - With Budi & Siska', duration: 180 },
+                { title: 'Tech Talk: The Future of AI', duration: 240 },
+                { title: 'Musik Sore: Hits Indie Lokal', duration: 200 },
+                { title: 'Warta HIMTI Terkini', duration: 120 }
+            ];
+
+            let isPlaying = false;
+            let currentTrackIndex = 0;
+            let currentTime = 0;
+            let playerInterval;
+
+            function playTrack() {
+                const track = playlist[currentTrackIndex];
+                nowPlayingEl.textContent = `Now Playing: ${track.title}`;
+                progressBar.max = track.duration;
+                
+                playerInterval = setInterval(() => {
+                    currentTime++;
+                    progressBar.value = currentTime;
+                    if (currentTime >= track.duration) {
+                        nextTrack();
+                    }
+                }, 1000); // Update setiap detik
+            }
+
+            function pauseTrack() {
+                clearInterval(playerInterval);
+            }
+
+            function nextTrack() {
+                pauseTrack();
+                currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+                currentTime = 0;
+                if (isPlaying) {
+                    playTrack();
+                } else {
+                    const track = playlist[currentTrackIndex];
+                    nowPlayingEl.textContent = `Now Playing: ${track.title}`;
+                    progressBar.value = 0;
+                }
+            }
+
+            playPauseBtn.addEventListener('click', function() {
+                isPlaying = !isPlaying;
+                if (isPlaying) {
+                    playPauseBtn.innerHTML = '❚❚'; // Pause symbol
+                    playTrack();
+                } else {
+                    playPauseBtn.innerHTML = '▶️'; // Play symbol
+                    pauseTrack();
+                }
+            });
+        });
+    </script>
 </body>
 </html>

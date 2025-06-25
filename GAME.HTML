@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Tetris Offline</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #202028;
+            font-family: 'Press Start 2P', cursive;
+            color: #fff;
+        }
+
+        .game-layout {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .game-board-container {
+            border: 4px solid #fff;
+            box-shadow: 0 0 20px #fff, inset 0 0 10px #fff;
+            padding: 10px;
+            background-color: #000;
+        }
+        
+        canvas {
+            display: block;
+            border: 2px solid #555;
+        }
+
+        .game-info {
+            width: 200px;
+            text-align: left;
+        }
+
+        .game-info h1 {
+            font-size: 1.5em;
+            margin: 0 0 20px 0;
+            text-shadow: 2px 2px #ff00ff;
+        }
+
+        .info-box {
+            background-color: #000;
+            border: 2px solid #555;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-box h2 {
+            font-size: 1em;
+            margin: 0 0 10px 0;
+            border-bottom: 1px solid #555;
+            padding-bottom: 10px;
+            color: #eee;
+        }
+        
+        .info-box p {
+            font-size: 1.2em;
+            margin: 0;
+            color: #fafafa;
+        }
+        
+        .instructions h2 {
+             font-size: 1em;
+             margin-top: 30px;
+        }
+        .instructions p {
+            font-size: 0.8em;
+            line-height: 1.5;
+            margin: 5px 0;
+        }
+
+        #gameOverScreen {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border: 4px solid #fff;
+            text-align: center;
+        }
+        #gameOverScreen h2 {
+            font-size: 2em;
+            color: #ff0000;
+            text-shadow: 2px 2px #fff;
+            margin: 0 0 20px 0;
+        }
+        #restartButton {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1em;
+            padding: 10px 20px;
+            background-color: #ff6b00;
+            color: white;
+            border: 2px solid #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="game-layout">
+        <div class="game-board-container">
+            <canvas id="gameCanvas"></canvas>
+        </div>
+        <div class="game-info">
+            <h1>TETRIS</h1>
+            <div class="info-box">
+                <h2>SKOR</h2>
+                <p id="score">0</p>
+            </div>
+            <div class="info-box">
+                <h2>BARIS</h2>
+                <p id="lines">0</p>
+            </div>
+            <div class="info-box">
+                <h2>LEVEL</h2>
+                <p id="level">1</p>
+            </div>
+            <div class="instructions">
+                 <h2>Kontrol</h2>
+                 <p>←: Kiri</p>
+                 <p>→: Kanan</p>
+                 <p>↓: Turun</p>
+                 <p>↑: Putar</p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="gameOverScreen">
+        <h2>GAME OVER</h2>
+        <button id="restartButton">Mulai Lagi</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const scoreEl = document.getElementById('score');
+        const linesEl = document.getElementById('lines');
+        const levelEl = document.getElementById('level');
+        const gameOverScreen = document.getElementById('gameOverScreen');
+        const restartButton = document.getElementById('restartButton');
+
+        const COLS = 10;
+        const ROWS = 20;
+        const BLOCK_SIZE = 30;
+
+        canvas.width = COLS * BLOCK_SIZE;
+        canvas.height = ROWS * BLOCK_SIZE;
+
+        const COLORS = [null, '#FF0D72', '#0DC2FF', '#0DFF72', '#F538FF', '#FF8E0D', '#FFE138', '#3877FF'];
+        const SHAPES = [
+            [], // 0
+            [[1,1,1,1]], // I
+            [[2,2],[2,2]], // O
+            [[0,3,0],[3,3,3]], // T
+            [[0,4,4],[4,4,0]], // S
+            [[5,5,0],[0,5,5]], // Z
+            [[6,0,0],[6,6,6]], // J
+            [[0,0,7],[7,7,7]]  // L
+        ];
+
+        let board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+        let piece, score, lines, level, dropCounter, dropInterval, isGameOver;
+
+        function initializeGame() {
+            board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+            score = 0;
+            lines = 0;
+            level = 1;
+            isGameOver = false;
+            dropInterval = 1000;
+            dropCounter = 0;
+
+            updateInfo();
+            spawnPiece();
+            
+            gameOverScreen.style.display = 'none';
+            requestAnimationFrame(gameLoop);
+        }
+
+        function spawnPiece() {
+            const typeId = Math.floor(Math.random() * (SHAPES.length - 1)) + 1;
+            const matrix = SHAPES[typeId];
+            piece = {
+                x: Math.floor(COLS / 2) - Math.floor(matrix[0].length / 2),
+                y: 0,
+                matrix: matrix,
+                color: COLORS[typeId]
+            };
+            if (isColliding(board, piece)) {
+                isGameOver = true;
+            }
+        }
+        
+        function rotate(matrix) {
+            const N = matrix.length - 1;
+            const result = matrix.map((row, i) => row.map((val, j) => matrix[N - j][i]));
+            return result;
+        }
+        
+        function playerRotate() {
+            const nextMatrix = rotate(piece.matrix);
+            let pos = piece.x;
+            let offset = 1;
+            while(isColliding(board, { ...piece, matrix: nextMatrix })) {
+                piece.x += offset;
+                offset = -(offset + (offset > 0 ? 1 : -1));
+                if (offset > nextMatrix[0].length) {
+                    piece.x = pos; // Batal rotasi
+                    return;
+                }
+            }
+            piece.matrix = nextMatrix;
+        }
+
+        function playerMove(dir) {
+            piece.x += dir;
+            if (isColliding(board, piece)) {
+                piece.x -= dir;
+            }
+        }
+        
+        function playerDrop() {
+            piece.y++;
+            if (isColliding(board, piece)) {
+                piece.y--;
+                lockPiece();
+                spawnPiece();
+            }
+            dropCounter = 0;
+        }
+        
+        function lockPiece() {
+            piece.matrix.forEach((row, y) => {
+                row.forEach((value, x) => {
+                    if (value !== 0) {
+                        board[piece.y + y][piece.x + x] = COLORS.indexOf(piece.color);
+                    }
+                });
+            });
+            clearLines();
+        }
+        
+        function clearLines() {
+            let clearedLines = 0;
+            outer: for (let y = ROWS - 1; y >= 0; y--) {
+                for (let x = 0; x < COLS; x++) {
+                    if (board[y][x] === 0) {
+                        continue outer;
+                    }
+                }
+                const row = board.splice(y, 1)[0].fill(0);
+                board.unshift(row);
+                y++;
+                clearedLines++;
+            }
+            if (clearedLines > 0) {
+                lines += clearedLines;
+                score += clearedLines * 10 * level;
+                if (lines >= level * 10) {
+                    level++;
+                    dropInterval = Math.max(100, 1000 - level * 100);
+                }
+                updateInfo();
+            }
+        }
+
+        function isColliding(board, piece) {
+            for (let y = 0; y < piece.matrix.length; y++) {
+                for (let x = 0; x < piece.matrix[y].length; x++) {
+                    if (
+                        piece.matrix[y][x] !== 0 &&
+                        (board[piece.y + y] && board[piece.y + y][piece.x + x]) !== 0
+                    ) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        function draw() {
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            drawMatrix(board, {x: 0, y: 0});
+            drawMatrix(piece.matrix, {x: piece.x, y: piece.y}, piece.color);
+        }
+        
+        function drawMatrix(matrix, offset, color) {
+            matrix.forEach((row, y) => {
+                row.forEach((value, x) => {
+                    if (value !== 0) {
+                        ctx.fillStyle = color || COLORS[value];
+                        ctx.fillRect((offset.x + x) * BLOCK_SIZE, (offset.y + y) * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+                        ctx.strokeStyle = '#000';
+                        ctx.strokeRect((offset.x + x) * BLOCK_SIZE, (offset.y + y) * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+                    }
+                });
+            });
+        }
+        
+        function updateInfo() {
+            scoreEl.textContent = score;
+            linesEl.textContent = lines;
+            levelEl.textContent = level;
+        }
+
+        let lastTime = 0;
+        function gameLoop(time = 0) {
+            if (isGameOver) {
+                gameOverScreen.style.display = 'flex';
+                return;
+            }
+            const deltaTime = time - lastTime;
+            lastTime = time;
+            
+            dropCounter += deltaTime;
+            if (dropCounter > dropInterval) {
+                playerDrop();
+            }
+
+            draw();
+            requestAnimationFrame(gameLoop);
+        }
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'ArrowLeft') playerMove(-1);
+            else if (event.key === 'ArrowRight') playerMove(1);
+            else if (event.key === 'ArrowDown') playerDrop();
+            else if (event.key === 'ArrowUp') playerRotate();
+        });
+        
+        restartButton.addEventListener('click', initializeGame);
+
+        initializeGame();
+    </script>
+</body>
+</html>
